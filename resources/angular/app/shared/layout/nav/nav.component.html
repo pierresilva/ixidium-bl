@@ -14,13 +14,7 @@
       <li class="tab hide-on-med-and-down">
         <a [routerLink]="['/home']" [routerLinkActive]="'active'">Inicio</a>
       </li>
-      <li class="tab hide-on-med-and-down" [routerLinkActiveOptions]="{exact: true}" [routerLinkActive]="'active'">
-        <a [routerLink]="['/quotations']">Cotizaciones</a>
-      </li>
-      <li class="tab hide-on-med-and-down">
-        <a [routerLink]="['/reservations/new']" [routerLinkActiveOptions]="{exact: true}"
-           [routerLinkActive]="'active'">Reservas</a>
-      </li>
+
       <li *isLogged="true" class="tab">
         <a [routerLink]="['/auth/logout']" [routerLinkActiveOptions]="{exact: true}"
            [routerLinkActive]="'active'">Salir</a>
