@@ -8,7 +8,6 @@ const Pages = 'Pages';
 const Audit = 'Auditoria';
 const Reporter = 'Reporteador';
 const Print = 'Imprimir';
-const Parameters = 'Parametros';
 const Command = 'Comandos';
 
 // tslint:disable:max-line-length
@@ -134,7 +133,8 @@ export const ROUTES: Routes = [
       icon: 'screen',
       text: 'Command',
       section: Command,
-      display: true
+      display: true,
+      title: 'Command Interface'
     },
   },
 
