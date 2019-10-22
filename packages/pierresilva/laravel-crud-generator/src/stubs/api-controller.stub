@@ -1,0 +1,181 @@
+<?php
+
+namespace DummyNamespace;
+
+use {{moduleNamespace}}Http\Requests\{{CrudName}}CreateRequest;
+use {{moduleNamespace}}Http\Requests\{{CrudName}}EditRequest;
+use DummyRootNamespaceHttp\Controllers\ApiController;
+
+use {{modelNamespace}}\{{modelName}};
+use Illuminate\Http\Request;
+
+/**
+ * @resource {{CrudName}}
+ *
+ * Operaciones CRUD para {{CrudName}}
+ *
+ * @author Developer Name <developer@email.com>
+ * @package {{module}}
+ * @version 1.0.0 <{{date}}>
+ */
+class DummyClass extends ApiController
+{
+    /**
+     * Items per page.
+     *
+     * @var int
+     */
+    protected $perPage = {{pagination}};
+
+    /**
+     * Create new instance of this controller.
+     *
+     * DummyClass constructor.
+     */
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * index()
+     *
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $keyword = $request->get('search');
+
+        if (!empty($keyword)) {
+            ${{crudName}} = {{modelName}}::{{whereSnippet}}paginate($this->perPage);
+        } else {
+            ${{crudName}} = {{modelName}}::paginate($this->perPage);
+        }
+        // ${{crudName}} = {{modelName}}::paginate($this->perPage);
+
+        $data = ${{crudName}}->toArray();
+
+        return response()->json([
+            'message' => 'Se obtuvo la colección con éxito!',
+            'data' => $data['data'],
+            'meta' => $this->getMeta($data),
+        ], 200);
+    }
+
+    /**
+     * store()
+     *
+     * Store a newly created resource in storage.
+     *
+     * @param {{CrudName}}CreateRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{CrudName}}CreateRequest $request)
+    {
+        /* {{validationRules}} */
+        $requestData = $request->all();
+        {{fileSnippet}}
+        ${{crudNameSingular}} = {{modelName}}::create($requestData);
+
+        return response()->json([
+            'message' => 'Se creó el ítem con éxito!',
+            'data' => ${{crudNameSingular}},
+        ], 201);
+    }
+
+    /**
+     * show()
+     *
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+
+        return response()->json([
+            'message' => 'Se obtuvo el ítem con éxito!',
+            'data' => ${{crudNameSingular}},
+        ], 200);
+    }
+
+    /**
+     * update()
+     *
+     * Update the specified resource in storage.
+     *
+     * @param {{CrudName}}EditRequest $request
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{CrudName}}EditRequest $request, $id)
+    {
+        /* {{validationRules}} */
+
+        $requestData = $request->all();
+        {{fileSnippet}}
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        ${{crudNameSingular}}->update($requestData);
+
+        return response()->json([
+            'message' => 'Se actualizó el ítem con éxito!',
+            'data' => ${{crudNameSingular}},
+        ], 202);
+    }
+
+    /**
+     * destroy()
+     *
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        ${{crudNameSingular}}->delete($id);
+
+        return response()->json([
+            'message' => 'Se eliminó el ítem con éxito!',
+            'data' => ${{crudNameSingular}},
+        ], 202);
+    }
+
+    /**
+     * edit()
+     *
+     * @hideFromAPIDocumentation
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit($id)
+    {
+        return response()->json([
+            'message' => 'Edit view or data for item ' . $id,
+        ], 200);
+
+    }
+
+    /**
+     * create()
+     *
+     * @hideFromAPIDocumentation
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function create()
+    {
+        return response()->json([
+            'message' => 'Create view or data',
+        ], 200);
+
+    }
+
+}

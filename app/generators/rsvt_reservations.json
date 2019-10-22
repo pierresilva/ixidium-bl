@@ -1,0 +1,236 @@
+{
+  "fields": [
+    {
+      "name": "reservation",
+      "type": "string",
+      "label": "Título"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Descrpción"
+    },
+    {
+      "name": "objective",
+      "type": "string",
+      "label": "Objetivo"
+    },
+    {
+      "name": "location_id",
+      "type": "select",
+      "label": "Locación",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "A",
+          "value": "a"
+        }
+      ]
+    },
+    {
+      "name": "reservable_id",
+      "type": "select",
+      "label": "Reservable",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "A",
+          "value": "a"
+        }
+      ]
+    },
+    {
+      "name": "web_origin",
+      "type": "boolean",
+      "label": "Origen"
+    },
+    {
+      "name": "place",
+      "type": "string",
+      "label": "Lugar"
+    },
+    {
+      "name": "observation",
+      "type": "text",
+      "label": "Observaciones"
+    },
+    {
+      "name": "additional_information",
+      "type": "text",
+      "label": "Información Adicional"
+    },
+    {
+      "name": "date_start",
+      "type": "date",
+      "label": "Fecha Inicial"
+    },
+    {
+      "name": "time_start",
+      "type": "time",
+      "label": "Hora Inicial"
+    },
+    {
+      "name": "date_end",
+      "type": "date",
+      "label": "Fecha Final"
+    },
+    {
+      "name": "time_end",
+      "type": "time",
+      "label": "Hora Final"
+    },
+    {
+      "name": "number_people",
+      "type": "number",
+      "label": "Cantidad de personas"
+    },
+    {
+      "name": "contact_first_name",
+      "type": "string",
+      "label": "Contacto Nombre"
+    },
+    {
+      "name": "contact_last_name",
+      "type": "string",
+      "label": "Contacto Apellido"
+    },
+    {
+      "name": "contact_document",
+      "type": "string",
+      "label": "Contacto Documento"
+    },
+    {
+      "name": "contact_phone",
+      "type": "string",
+      "label": "Contacto Teléfono"
+    },
+    {
+      "name": "contact_cell_phone",
+      "type": "string",
+      "label": "Contacto Celular"
+    },
+    {
+      "name": "contact_email",
+      "type": "string",
+      "label": "Contacto Email"
+    },
+    {
+      "name": "total",
+      "type": "string",
+      "label": "Presupuesto / Total"
+    },
+    {
+      "name": "status_id",
+      "type": "select",
+      "label": "Reservable",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "A",
+          "value": "a"
+        }
+      ]
+    }
+  ],
+  "foreign_keys": [],
+  "relationships": [],
+  "validations": [
+    {
+      "field": "reservation",
+      "rules": "required|max:255"
+    },
+    {
+      "field": "description",
+      "rules": "nullable|max:128"
+    },
+    {
+      "field": "objective",
+      "rules": "nullable"
+    },
+    {
+      "field": "location_id",
+      "rules": "required"
+    },
+    {
+      "field": "reservable_id",
+      "rules": "nullable"
+    },
+    {
+      "field": "web_origin",
+      "rules": "nullable"
+    },
+    {
+      "field": "place",
+      "rules": "nullable"
+    },
+    {
+      "field": "observation",
+      "rules": "nullable"
+    },
+    {
+      "field": "additional_information",
+      "rules": "nullable"
+    },
+    {
+      "field": "date_start",
+      "rules": "required"
+    },
+    {
+      "field": "time_start",
+      "rules": "required"
+    },
+    {
+      "field": "date_end",
+      "rules": "required"
+    },
+    {
+      "field": "time_end",
+      "rules": "required"
+    },
+    {
+      "field": "number_people",
+      "rules": "required"
+    },
+    {
+      "field": "contact_first_name",
+      "rules": "nullable"
+    },
+    {
+      "field": "contact_last_name",
+      "rules": "nullable"
+    },
+    {
+      "field": "contact_phone",
+      "rules": "nullable"
+    },
+    {
+      "field": "contact_document",
+      "rules": "nullable"
+    },
+    {
+      "field": "contact_cell_phone",
+      "rules": "nullable"
+    },
+    {
+      "field": "contact_email",
+      "rules": "nullable|email"
+    },
+    {
+      "field": "total",
+      "rules": "nullable|string"
+    },
+    {
+      "field": "status_id",
+      "rules": "required"
+    }
+  ]
+}

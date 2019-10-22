@@ -1,0 +1,75 @@
+<nav class="top-nav">
+  <div class="container">
+    <div class="nav-wrapper" id="posts-title">
+      <a class="page-title">Reporte {{report.name}}</a>
+    </div>
+  </div>
+</nav>
+
+<div>
+  <div class="container">
+    <div class="ror">
+      <div class="col s12">
+        <div class="modalFilter">
+          <div class="modal-content">
+          </div>
+          <div class="modal-footer">
+            <a href="javascript:void(0)" class=" btn left waves-effect waves-light">Clear</a>
+            <a href="javascript:void(0)"  class=" btn right waves-effect waves-light">Ok</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="s12 m12 l12">
+        <div *ngIf="columns.length">
+          <label for="select-columns">Seleccione las columnas:</label>
+          <select class="browser-default" id="select-columns" multiple style="min-height: 100px;">
+            <option *ngFor="let col of columns" [value]="col.title">{{col.title}}</option>
+          </select>
+          <!--<div>-->
+          <!--<a href="javascript:void(0);" (click)="rerender()">Render</a>-->
+          <!--</div>-->
+        </div>
+
+        <div style="overflow-x:auto;" id="datatable-container">
+          <table datatable [id]="'datatable'" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                 class="striped" style="padding-bottom: 50px; padding-top: 80px;">
+            <thead>
+            <tr>
+              <th *ngFor="let column of dtOptions?.columns" [id]="'col-' + column.data" class="dt-header">
+                {{column.title}}
+              </th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr *ngIf="columns.length">
+              <td *ngFor="let column of columns">
+
+              </td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr *ngFor="let item of dataTable">
+              <td *ngFor="let column of dtOptions?.columns">{{item[column.data]}}</td>
+            </tr>
+            <tr *ngIf="dataTable?.length === 0">
+              <td class="no-data-available">No data!</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="font-size: 24px;">
+      <div style="float: right;">
+        <ng-container *ngIf="totals.length">
+          <div *ngFor="let total of totals">
+            <b>TOTAL {{total.title}}:&nbsp;&nbsp;</b> <div style="float: right;">{{ total.total | number }}</div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="mask"></div>

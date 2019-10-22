@@ -1,0 +1,81 @@
+.side-nav{
+  height: 100% !important;
+  width: 25% !important;
+}
+
+.renova-main-nav {
+  border-radius: 0px;
+}
+
+#logo img {
+  max-width: 150px;
+  margin: 0.5rem 0;
+}
+
+.sidenav-opened {
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 3px;
+  padding: 9px 24px;
+  margin-left: 10px;
+}
+
+.side-nav li>a.active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.user-view {
+  /*background: url('../../../../assets/images/default.jpg');
+  background-position: -90px;
+  background-size: 400px;*/
+  background: #02A85E;
+  padding: 32px 32px 16px;
+  .name {
+    font-size: 1.25em;
+  }
+  .name,
+  .email {
+    height: auto;
+    line-height: 24px;
+    padding: 0;
+  }
+}
+
+.sidenav .collapsible-body li a, .sidenav.fixed .collapsible-body li a {
+  padding: 0 21px 0 21px;
+}
+
+.side-nav .collapsible-body li a.sub {
+  padding: 0 23.5px 0 51px !important;
+}
+
+.sidenav li > a {
+  padding: 0 21px;
+}
+
+.collapsible-header {
+  padding: 0 21px !important;
+}
+
+:host {
+  ::ng-deep {
+
+    a {
+      i.caret {
+        float: right;
+        margin-right: -10px;
+        -ms-transition: 0.2s;
+        -webkit-transition: 0.2s;
+        -o-transition: 0.2s;
+        transition: 0.2s;
+      }
+      &.active {
+        i.caret {
+          -ms-transform: rotate(-90deg);
+          -webkit-transform: rotate(-90deg);
+          -o-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+}

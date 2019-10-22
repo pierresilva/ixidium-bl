@@ -1,0 +1,73 @@
+<nav role="navigation">
+  <div class="nav-wrapper container">
+
+    <a href="javascript:void(0);" id="btn-sidenav" class="left sidenav-trigger" *isLogged="true"
+       style="display: block !important;">
+      <i class="material-icons">menu</i>
+    </a>
+
+    <a routerLink="/home" id="logo" class="brand-logo center">
+      <img class="responsive-img" src="assets/images/logos/logo-recreaweb.png"/>
+    </a>
+
+    <ul class="right">
+      <li class="tab hide-on-med-and-down">
+        <a [routerLink]="['/home']" [routerLinkActive]="'active'">Inicio</a>
+      </li>
+      <li class="tab hide-on-med-and-down" [routerLinkActiveOptions]="{exact: true}" [routerLinkActive]="'active'">
+        <a [routerLink]="['/quotations']">Cotizaciones</a>
+      </li>
+      <li class="tab hide-on-med-and-down">
+        <a [routerLink]="['/reservations/new']" [routerLinkActiveOptions]="{exact: true}"
+           [routerLinkActive]="'active'">Reservas</a>
+      </li>
+      <li *isLogged="true" class="tab">
+        <a [routerLink]="['/auth/logout']" [routerLinkActiveOptions]="{exact: true}"
+           [routerLinkActive]="'active'">Salir</a>
+      </li>
+      <li *isLogged="false" class="tab">
+        <a [routerLink]="['/auth']" [routerLinkActiveOptions]="{exact: true}" [routerLinkActive]="'active'">Ingresar</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+<mz-sidenav *isLogged="true"
+            [id]="'sidenav-demo'"
+            [collapseButtonId]="'btn-sidenav'"
+            [closeOnClick]="true"
+            [edge]="'left'">
+
+  <mz-sidenav-header>
+    <div class="user-view">
+      <img class="circle avatar" src="assets/images/default.jpg">
+      <div class="white-text name">{{auth.getUserAttribute('first_name')}} {{auth.getUserAttribute('last_name')}}</div>
+      <div class="white-text email">{{auth.getUserAttribute('name')}}</div>
+    </div>
+  </mz-sidenav-header>
+
+
+  <mz-sidenav-link>
+    <a class="waves-effect" routerLink="/reporter" routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}">
+      <i mz-icon-mdi [icon]="'dip-switch'"></i>Reporteador
+    </a>
+  </mz-sidenav-link>
+
+  <mz-sidenav-link>
+    <a class="waves-effect" routerLink="/audit" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <i mz-icon-mdi [icon]="'google-circles-extended'"></i>Auditoria
+    </a>
+  </mz-sidenav-link>
+
+  <mz-sidenav-link *userCan="['third_parties_third_party_access']">
+    <a class="waves-effect" routerLink="/thirdparties" routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}">
+      <i mz-icon-mdi [icon]="'account'"></i>Terceros
+    </a>
+  </mz-sidenav-link>
+
+
+</mz-sidenav>

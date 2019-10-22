@@ -1,0 +1,99 @@
+<mz-input-container>
+    <i mz-icon
+       mz-input-prefix
+       [icon]="'search'">
+    </i>
+    <input mz-input
+           [label]="'Buscar'"
+           id="search-online-help"
+           length="150"
+           (keyup.enter)="getOnlineHelps()"
+           type="text">
+</mz-input-container>
+
+<table>
+    <thead>
+    <tr>
+        <th>Url Formulario</th>
+        <th>ID Elemento</th>
+        <th>Descripción</th>
+        <th>Posición</th>
+        <th>Estado</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody *ngIf="onlineHelps.length < 1">
+    <tr>
+        <td colspan="6">
+            No hay resultados
+        </td>
+    </tr>
+    </tbody>
+    <tbody *ngIf="onlineHelps.length > 0">
+    <tr *ngFor="let onlineHelp of onlineHelps">
+        <td><a href="javascript:void(0);" (click)="getOnlineHelpByUrlForm(onlineHelp.url_form); onlineHelpOrderModal.openModal()">
+            {{onlineHelp.url_form}} </a></td>
+        <td>{{onlineHelp.element_id}}</td>
+        <td>{{onlineHelp.description}}</td>
+        <td>{{onlineHelp.position}}</td>
+        <td>{{onlineHelp.status }}</td>
+        <td>
+            <a (click)="editOnlineHelp(onlineHelp); onlineHelpModal.openModal()"
+               *userCan="['administration_onlineHelp_edit']"
+               style="cursor: pointer;"
+               [id]="'online-help-edit-' + onlineHelp.id">
+                <i class="material-icons">edit</i>
+            </a>
+            &nbsp;&nbsp;
+            <a (click)="deleteOnlineHelp(onlineHelp)"
+               *userCan="['administration_onlineHelp_delete']"
+               style="cursor: pointer; color: red;"
+               [id]="'online-help-delete-' + onlineHelp.id">
+                <i class="material-icons">delete</i>
+            </a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<renova-pagination
+        (goPage)="getOnlineHelps($event)"
+        (goNext)="getOnlineHelps(meta.current_page + 1)"
+        (goPrev)="getOnlineHelps(meta.current_page - 1)"
+        [pagesToShow]="10"
+        [page]="meta.current_page"
+        [perPage]="meta.per_page"
+        [count]="meta.total"></renova-pagination>
+
+<mz-modal #onlineHelpModal
+          id="online-help-modal"
+          class="modal-fixed-header modal-no-footer">
+    <mz-modal-content>
+        <renova-online-helps-form [(onlineHelpIn)]="onlineHelp" (onlineHelpOut)="getOnlineHelps()"
+                                  [modal]="true"></renova-online-helps-form>
+    </mz-modal-content>
+</mz-modal>
+
+<mz-modal #onlineHelpOrderModal
+          id="online-help-order-modal"
+          class="modal-fixed-header modal-no-footer">
+    <mz-modal-content>
+        <renova-online-help-order [(onlineHelpOrderIn)]="onlineHelpsOrder" (onlineHelpOut)="getOnlineHelps()"
+                                  [modal]="true"></renova-online-help-order>
+    </mz-modal-content>
+</mz-modal>
+
+<a mz-button
+   mz-tooltip
+   *userCan="['administration_onlineHelp_create']"
+   [tooltip]="'Nueva Ayuda'"
+   [position]="'left'"
+
+   [delay]="0"
+   [float]="true"
+   [large]="true"
+   (click)="newOnlineHelp(); onlineHelpModal.openModal()"
+   class="list-add-button red">
+    <i class="material-icons i-large">add</i>
+</a>

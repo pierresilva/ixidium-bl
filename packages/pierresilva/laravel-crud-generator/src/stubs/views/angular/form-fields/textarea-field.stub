@@ -1,0 +1,10 @@
+<mz-textarea-container>
+    <textarea mz-textarea %%required%%
+              mz-validation
+              [label]="'%%itemLabel%%'"
+              [errorMessageResource]="errorMessageResources.%%itemName%%"
+              formControlName="%%itemName%%"
+              [(ngModel)]="%%crud_name_camel_singular%%.%%itemName%%"
+              id="%%itemName%%"
+              name="%%itemName%%"></textarea>
+</mz-textarea-container>

@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="input-field col s12">
+        <select2 [id]="name"
+                 class="invalid"
+                 [(ngModel)]="value"
+                 [value]="selected"
+                 [name]="name"
+                 [data]="selectOptions"
+                 (valueChanged)="changeValue($event)"
+                 [width]="300"
+                 [options]="options"></select2>
+        <label class="active" [attr.for]="identifier">{{label}} <span *ngIf="required" class="placeholder-required" style="color: #e30613;">*</span></label>
+        <div class="invalid" *ngIf="required && (!value || value.length < 1)" style="color: #e30613; font-size: .8rem;">Este campo es requerido.</div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{
+    "lang": "es-co",
+    "name": "Renova App",
+    "short_name": "Renova",
+    "display": "standalone",
+    "start_url": "\/?homescreen=1",
+    "background_color": "#ffffff",
+    "theme_color": "#003399",
+    "icons": [
+        {
+            "src": "images\/icon.png",
+            "sizes": "198x198",
+            "type": "image\/png"
+        }
+    ]
+}

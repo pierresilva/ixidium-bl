@@ -1,0 +1,107 @@
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ApiService} from '../../../../shared/services/api.service';
+import {crud_name_singular} from '../models/crud_name_dash_singular';
+import {AlertService} from '../../../../shared/services/alert.service';
+import {MzToastService} from 'ngx-materialize';
+import {PaginationMeta} from '../../../../shared/layout/pagination/models/pagination-meta';
+
+@Component({
+    selector: 'renova-crud_name_dash-list',
+    templateUrl: './crud_name_dash-list.component.html',
+    styleUrls: ['./crud_name_dash-list.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+})
+
+export class crud_nameListComponent implements OnInit {
+    meta: PaginationMeta;
+    /**
+    * Listado de crud_title
+    */
+    crud_name_camel: crud_name_singular[];
+
+    /**
+    * Item de crud_title
+    */
+    crud_name_camel_singular: crud_name_singular;
+
+    constructor(private api: ApiService,
+        private alert: AlertService,
+        private toast: MzToastService) {
+    }
+
+    ngOnInit() {
+        this.crud_name_camel = [];
+        this.crud_name_camel_singular = new crud_name_singular;
+        this.meta = new PaginationMeta;
+        this.getcrud_name();
+        $('.modal').modal();
+    }
+
+    /**
+    * Obtiene las crud_title paginadas
+    *
+    * @param {number} page
+    * @param {string | number | string[]} search
+    */
+    getcrud_name(page = 1, search = $('#search-crud_name_dash').val()) {
+        console.log(search);
+        this.api.get('[[crudUrl]]?page=' + page + '&search=' + search)
+            .subscribe(
+                resp => {
+                    this.crud_name_camel = resp.data;
+                    this.meta = resp.meta;
+                }
+            );
+    }
+
+    /**
+    * Crea un objeto vacio crud_title
+    */
+    newcrud_name_singular() {
+        this.crud_name_camel_singular = new crud_name_singular;
+    }
+
+    /**
+    * Obtiene el objeto crud_title para su edición
+    *
+    * @param {crud_name_singular} crud_name_camel_singular
+    */
+    editcrud_name_singular(crud_name_camel_singular: crud_name_singular) {
+        this.crud_name_camel_singular = crud_name_camel_singular;
+    }
+
+    /**
+    * Obtiene el objeto crud_title para su eliminación
+    *
+    * @param {crud_name_singular} crud_name_camel_singular
+    */
+    deletecrud_name_singular(crud_name_camel_singular: crud_name_singular) {
+        console.log(crud_name_camel_singular);
+        this.alert.confirmThis(
+            'confirm',
+            'Eliminar crud_title?',
+            'Desea eliminar la crud_title_singular ?',
+            () => {
+                this.api.delete('[[crudUrl]]/' + crud_name_camel_singular.id, {})
+                    .subscribe(
+                        () => {
+                            this.toast.show(
+                                'crud_title_singular eliminada con éxito!',
+                                5000,
+                                'green',
+                            );
+                            this.getcrud_name();
+                        }
+                    );
+            },
+            () => {
+                this.toast.show(
+                    'Eliminación cancelada!',
+                    5000,
+                    'orange',
+                );
+            },
+            'orange white-text');
+    }
+
+}

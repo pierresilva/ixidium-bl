@@ -1,0 +1,26 @@
+import {Component, OnInit} from '@angular/core';
+import {MzModalService} from 'ngx-materialize';
+
+@Component({
+    selector: 'renova-crud_name_dash',
+    templateUrl: './crud_name_dash.component.html',
+    styleUrls: ['./crud_name_dash.component.scss']
+})
+
+export class crud_nameComponent implements OnInit {
+
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    newcrud_name_singular() {
+        console.log('new crud_name_singular');
+    }
+
+    savecrud_name_singular(event) {
+        console.log(event);
+    }
+
+}

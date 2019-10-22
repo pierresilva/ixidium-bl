@@ -1,0 +1,13 @@
+<mz-radio-button-container>
+    <input mz-radio-button
+           mz-validation
+           [label]="'%%itemLabel%%'"
+           id="%%itemName%%-%%itemOption%%"
+           name="%%itemName%%"
+           value="%%itemOption%%"
+           [checked]="%%crud_name_camel_singular%%.%%itemName%% === '%%itemOption%%'"
+           [errorMessageResource]="errorMessageResources.%%itemName%%"
+           formControlName="%%itemName%%"
+           [(ngModel)]="%%crud_name_camel_singular%%.%%itemName%%"
+           type="radio">
+</mz-radio-button-container>

@@ -1,0 +1,21 @@
+<mz-select-container [class]="classIn">
+  <select mz-select mz-validation required
+          [errorMessageResource]="errorMessages.location"
+          [disabled]="disabled"
+          id="location"
+          name="location"
+          [label]="'Centro Recreacional'"
+          [placeholder]="'Seleccione...'"
+          (change)="returnIdLocation($event)"
+          [(ngModel)]="selectedIn">
+    <ng-container *ngIf="locations.length">
+      <option *ngFor="let l of locations"
+              class="circle"
+              [value]="l.id"
+              [attr.name]="l.location"
+              [attr.data-icon]="siteURL+'upload/logos/' + l.url_logo">{{l.location}}</option>
+    </ng-container>
+
+  </select>
+</mz-select-container>
+

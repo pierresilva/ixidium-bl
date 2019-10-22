@@ -1,0 +1,12 @@
+<li>
+  <ul #collapsible class="collapsible collapsible-accordion">
+    <li>
+      <ng-content select="mz-sidenav-collapsible-header"></ng-content>
+      <div class="collapsible-body">
+        <ul>
+          <ng-content select="mz-sidenav-collapsible-content"></ng-content>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</li>

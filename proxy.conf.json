@@ -1,0 +1,14 @@
+{
+  "/api/*": {
+    "target": "http://renova.test",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/elfinder/*": {
+    "target": "http://renova.test",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

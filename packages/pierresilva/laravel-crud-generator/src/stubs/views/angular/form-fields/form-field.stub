@@ -1,0 +1,11 @@
+<mz-input-container>
+    <input mz-input %%required%%
+           mz-validation
+           [label]="'%%itemLabel%%'"
+           id="%%itemName%%"
+           name="%%itemName%%"
+           [errorMessageResource]="errorMessageResources.%%itemName%%"
+           formControlName="%%itemName%%"
+           [(ngModel)]="%%crud_name_camel_singular%%.%%itemName%%"
+           type="%%itemType%%">
+</mz-input-container>

@@ -1,0 +1,214 @@
+<nav class="top-nav">
+  <div class="container">
+    <div class="nav-wrapper" id="posts-title">
+      <a class="page-title">{{reportTitle}}</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <form [formGroup]="reportsForm">
+    <div class="row">
+      <div class="s12 m12 l12">
+        <mz-input-container class="col s4" [formGroup]="reportsForm">
+          <input mz-input
+                 [readonly]="!(reportTitle === 'Nuevo Reporte')"
+                 mz-validation
+                 [errorMessageResource]="errorMessageResources.name"
+                 formControlName="name"
+                 [label]="'Nombre del Reporte'" 
+                 id="report-name" 
+                 [name]="'report-name'" 
+                 placeholder="Ingrese el nombre del reporte"
+                 type="text"
+                 [(ngModel)]="report.name"
+                 required>
+        </mz-input-container>
+        <mz-select-container class="col s4" [formGroup]="reportsForm">
+          <select mz-select 
+                  mz-validation
+                  [errorMessageResource]="errorMessageResources.module"
+                  formControlName="module"
+                  [name]="'name'"
+                  id="report-module" 
+                  [label]="'Modulo del Reporte'"
+                  [(ngModel)]="report.module"
+                  required>
+            <option value="">Seleccione un módulo...</option>
+            <option *ngFor="let module of modulesList" 
+                    [value]="module.value">{{module.text}}</option>
+          </select>
+        </mz-select-container>
+        <mz-select-container class="col s4">
+          <select mz-select 
+                  mz-validation
+                  [errorMessageResource]="errorMessageResources.connection"
+                  formControlName="connection"
+                  [name]="'connection'"
+                  id="report-connection" 
+                  [label]="'Conexión'"
+                  [(ngModel)]="report.connection"
+                  required>
+            <option value="">Seleccione una conexión...</option>
+            <option *ngFor="let connection of connectionList" 
+                    [value]="connection.value">{{connection.text}}</option>
+          </select>
+        </mz-select-container>
+        <mz-textarea-container class="col s12">
+          <textarea mz-textarea 
+                    mz-validation
+                    [errorMessageResource]="errorMessageResources.description"
+                    formControlName="description"
+                    [name]="'description'"
+                    [label]="'Descripción'" 
+                    id="report-description" 
+                    placeholder="Ingrese la descripción"
+                    [(ngModel)]="report.description"
+                    required></textarea>
+        </mz-textarea-container>
+        <mz-timepicker-container class="col s6">
+          <input mz-timepicker 
+                 mz-validation
+                 [errorMessageResource]="errorMessageResources.start_at"
+                 formControlName="start_at"
+                 [name]="'start_at'"
+                 [label]="'Horario desde'" 
+                 [options]="timepickerOptions" 
+                 id="report-start_at" 
+                 type="text"
+                 [(ngModel)]="report.start_at"
+                 required>
+        </mz-timepicker-container>
+        <mz-timepicker-container class="col s6">
+          <input mz-timepicker 
+                 mz-validation                 
+                 [errorMessageResource]="errorMessageResources.end_at"
+                 formControlName="end_at"
+                 [name]="'end_at'"
+                 [label]="'Horario hasta'" 
+                 [options]="timepickerOptions" 
+                 id="report-end_at" 
+                 type="text"
+                 [(ngModel)]="report.end_at"
+                 required>
+        </mz-timepicker-container>
+        <mz-textarea-container class="col s12">
+          <i mz-icon
+             mz-textarea-prefix 
+             (click)="checkSql()" 
+             style="cursor: pointer;"
+             [icon]="'message-reply-text'">
+          </i>
+          <textarea mz-textarea 
+                    mz-validation
+                    [errorMessageResource]="errorMessageResources.sql"
+                    formControlName="sql"
+                    [name]="'sql'"
+                    [label]="'SQL'" 
+                    id="report-sql" 
+                    placeholder="Ingrese la sentencia SQL"
+                    [(ngModel)]="report.sql"
+                    required></textarea>
+        </mz-textarea-container>
+      </div>
+        <ng-container formArrayName="fields">
+        <div class="row" *ngFor="let field of fieldsArray.controls; let i = index">
+          <div class="col s3">
+            <mz-input-container [formGroupName]="i" class="col s12">
+              <input mz-input
+                     mz-validation
+                     [label]="'Campo'" 
+                     [id]="'name-' + i"
+                     [name]="'name'"
+                     [formControlName]="'name'"
+                     [errorMessageResource]="errorMessageResources.name"
+                     type="text"
+                     required
+                     [(ngModel)]="viewFields[i].name"
+                     readonly>
+            </mz-input-container>
+          </div>
+          <div class="col s3">
+            <mz-input-container [formGroupName]="i" class="col s12">
+              <input mz-input
+                     mz-validation
+                     [label]="'Titulo'"
+                     [id]="'title-' + i"
+                     [name]="'title'"
+                     [formControlName]="'title'"
+                     [errorMessageResource]="errorMessageResources.title"
+                     type="text"
+                     [(ngModel)]="viewFields[i].title"
+                     required>
+            </mz-input-container>
+          </div>
+          <div class="col s3">
+            <mz-select-container [formGroupName]="i" class="col s12">
+              <select mz-select
+                      mz-validation
+                      [label]="'Filtro'"
+                      [id]="'filter-' + i"
+                      [name]="'filter'"
+                      [formControlName]="'filter'"
+                      [errorMessageResource]="errorMessageResources.filter"
+                      type="text"
+                      [(ngModel)]="viewFields[i].filter"
+                      required>
+                <option value="">Seleccione...</option>
+                <option value="string" selected>Texto</option>
+                <option value="number">Número</option>
+                <option value="date">Fecha</option>
+              </select>
+            </mz-select-container>
+          </div>
+          <div class="col s3" *ngIf="viewFields[i].filter === 'number'">
+            <mz-select-container [formGroupName]="i" class="col s12">
+              <select mz-select
+                      mz-validation
+                      [label]="'Totalizar'"
+                      [id]="'totalize-' + i"
+                      [name]="'totalize'"
+                      [formControlName]="'totalize'"
+                      [errorMessageResource]="errorMessageResources.totalize"
+                      type="text"
+                      [(ngModel)]="viewFields[i].totalize"
+                      required>
+                <option value="no" >No</option>
+                <option value="yes">Si</option>
+              </select>
+            </mz-select-container>
+          </div>
+        </div>
+        </ng-container>
+      <div class="row">
+        <div class="col s12">
+          <a mz-button
+             class="orange right"
+             style="margin-left: 20px;"
+             id="report-form-cancel"
+             routerLink="/reporter">
+            Cancelar
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <button mz-button
+                  id="report-form-save"
+                  (click)="saveReport()"
+                  [disabled]="!reportsForm.valid"
+                  class="right">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="row">
+        <div class="col s12">
+            <label for="feature_image">Imágen</label>
+            <input type="text" id="feature_image" name="feature_image" [(ngModel)]="fileUrl">
+            <a [href]="elFinderUrl" class="popup_selector" data-inputid="feature_image">Seleccione una imágen</a>
+            <div>{{fileUrl}}</div>
+        </div>
+    </div>
+    -->
+  </form>
+</div>

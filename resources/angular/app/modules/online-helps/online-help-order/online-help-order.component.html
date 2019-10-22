@@ -1,0 +1,65 @@
+<div class="modal-header" *ngIf="modalMode">
+    <nav>
+        <div class="nav-wrapper">
+            <ul class="left">
+                <li>
+                    <a mz-button mz-tooltip href="javascript:void(0);"
+                       [flat]="true"
+                       [float]="true"
+                       [delay]="0"
+                       [tooltip]="'Cancelar'"
+                       id="close-order-form"
+                       class="modal-action modal-close transparent">
+                        <i class="material-icons">arrow_back</i>
+                    </a>
+                </li>
+            </ul>
+            <span class="brand-logo hide-on-small-only">Ordenar</span>
+            <ul class="right">
+                <li>
+                    <a mz-button mz-tooltip href="javascript:void(0);"
+                       *userCan="['administration_onlineHelp_order']"
+                       [flat]="true"
+                       [float]="true"
+                       [delay]="0"
+                       [tooltip]="'Guardar'"
+                       (click)="saveOrderOnlineHelp()"
+                       id="save-form"
+                       class="transparent">
+                        <i class="material-icons">save</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Url Formulario</th>
+        <th>ID Elemento</th>
+        <th>Descripción</th>
+        <th>Posición</th>
+        <th>Estado</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="onlineHelps.length < 1">
+    <tr>
+        <td colspan="5">
+            No hay resultados
+        </td>
+    </tr>
+    </tbody>
+    <tbody class='container' [dragula]='"sixth-bag"' [dragulaModel]='onlineHelps' *ngIf="onlineHelps.length > 0">
+    <tr *ngFor="let onlineHelp of onlineHelps">
+        <td><i class="material-icons handle">unfold_more</i>
+            {{onlineHelp.url_form}}
+        </td>
+        <td>{{onlineHelp.element_id}}</td>
+        <td>{{onlineHelp.description}}</td>
+        <td>{{onlineHelp.position }}</td>
+        <td>{{onlineHelp.status }}</td>
+    </tr>
+    </tbody>
+</table>

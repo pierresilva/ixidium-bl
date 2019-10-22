@@ -1,0 +1,21 @@
+<div class="input-field">
+    <i [id]="'search-icon-' + data" class="material-icons i-small prefix">search</i>
+    <input [id]="'search-' + data" type="search" [name]="'search-' + data" autocomplete="off">
+    <label class="dt-search-column-label" [for]="'search-' + data">Buscar {{title}}</label>
+    <mz-dropdown
+            [id]="'search-dropdown-' + data"
+            [align]="'left'"
+            [belowOrigin]="false"
+            [constrainWidth]="true"
+            [dropdownButtonId]="'search-icon-' + data"
+            [gutter]="true"
+            [hover]="true"
+            [inDuration]="300"
+            [outDuration]="300"
+            [stopPropagation]="true">
+        <mz-dropdown-item><a href="#!">One</a></mz-dropdown-item>
+        <mz-dropdown-item><a href="#!">Two</a></mz-dropdown-item>
+        <mz-dropdown-divider></mz-dropdown-divider>
+        <mz-dropdown-item><a href="#!">Three</a></mz-dropdown-item>
+    </mz-dropdown>
+</div>

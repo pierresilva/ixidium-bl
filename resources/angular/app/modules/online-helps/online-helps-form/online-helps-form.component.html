@@ -1,0 +1,108 @@
+<div class="modal-header" *ngIf="modalMode">
+    <nav>
+        <div class="nav-wrapper">
+            <ul class="left">
+                <li>
+                    <a mz-button mz-tooltip href="javascript:void(0);"
+                       [flat]="true"
+                       [float]="true"
+                       [delay]="0"
+                       [tooltip]="'Cancelar'"
+                       id="close-form"
+                       class="modal-action modal-close transparent">
+                        <i class="material-icons">arrow_back</i>
+                    </a>
+                </li>
+            </ul>
+            <span class="brand-logo hide-on-small-only">Manual Online</span>
+            <ul class="right">
+                <li>
+                    <a mz-button mz-tooltip href="javascript:void(0);"
+                       [flat]="true"
+                       [float]="true"
+                       [delay]="0"
+                       [tooltip]="'Guardar'"
+                       (click)="saveOnlineHelp()"
+                       id="save-form"
+                       class="transparent">
+                        <i class="material-icons">save</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<form id="online-help-form" [formGroup]="onlineHelpForm">
+    <mz-input-container>
+        <input mz-input
+               mz-validation
+               [label]="'URL Formulario'"
+               id="url_form"
+               placeholder="Ingrese la url del formulario"
+               length="150"
+               formControlName="url_form"
+               [(ngModel)]="onlineHelp.url_form"
+               name="url_form"
+               type="text"
+               [errorMessageResource]="errorMessageResources.url_form">
+    </mz-input-container>
+    <mz-input-container>
+        <input mz-input
+               mz-validation
+               [label]="'ID Elemento'"
+               id="element_id"
+               placeholder="Ingrese el ID del elemento"
+               length="150"
+               formControlName="element_id"
+               [(ngModel)]="onlineHelp.element_id"
+               name="element_id"
+               type="text"
+               [errorMessageResource]="errorMessageResources.element_id">
+    </mz-input-container>
+    <mz-textarea-container>
+        <textarea mz-textarea
+                  mz-validation
+                  [label]="'Descripción'"
+                  id="description"
+                  placeholder="Ingrese la descripción!"
+                  formControlName="description"
+                  [(ngModel)]="onlineHelp.description"
+                  name="description"
+                  [errorMessageResource]="errorMessageResources.description"
+                  length="250"></textarea>
+    </mz-textarea-container>
+
+    <mz-select-container>
+        <select mz-select
+                mz-validation
+                id="position"
+                name="position"
+                formControlName="position"
+                [(ngModel)]="onlineHelp.position"
+                [label]="'Posición'"
+                [placeholder]="'Seleccione la posición de la ayuda'"
+                [errorMessageResource]="errorMessageResources.position">
+            <option value="left">Izquierda</option>
+            <option value="right">Derecha</option>
+            <option value="top">Encima</option>
+            <option value="bottom">Debajo</option>
+        </select>
+    </mz-select-container>
+
+    <mz-select-container>
+        <select mz-select
+                mz-validation
+                id="status"
+                name="status"
+                formControlName="status"
+                [(ngModel)]="onlineHelp.status"
+                [label]="'Estado'"
+                [placeholder]="'Seleccione el estado'"
+                [errorMessageResource]="errorMessageResources.status">
+
+            <option value="active">Activo</option>
+            <option value="inactive">Inactivo</option>
+        </select>
+    </mz-select-container>
+</form>

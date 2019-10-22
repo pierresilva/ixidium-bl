@@ -1,0 +1,26 @@
+<p>
+    {{message}}
+</p>
+
+<ul *ngIf="contacts.length > 0">
+    <li *ngFor="let contact of contacts">
+        {{contact.first_name}} {{contact.last_name}}<br>
+        <span class="small">{{contact.created_at | amTimeAgo}}</span>
+    </li>
+</ul>
+
+<div>
+    ID: <input type="text" name="id" [(ngModel)]="form.id">
+</div>
+<div>
+    Nombre: <input type="text" name="first_name" [(ngModel)]="form.first_name">
+</div>
+<div>
+    Apellidos: <input type="text" name="last_name" [(ngModel)]="form.last_name">
+</div>
+<div>
+    <button (click)="insert()">
+        crear
+    </button>
+    <renova-form-select [label]="'Test'" [placeholder]="'Some'" [required]="true" [options]="options" [class]="'s12'"></renova-form-select>
+</div>

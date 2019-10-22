@@ -1,0 +1,148 @@
+<div class="modal-header" *ngIf="modalMode">
+    <nav>
+        <div class="nav-wrapper">
+            <ul class="left">
+                <li>
+                    <a mz-button mz-tooltip href="javascript:void(0);"
+                       [flat]="true"
+                       [float]="true"
+                       [delay]="0"
+                       [tooltip]="'Cancelar'"
+                       id="close-form"
+                       class="modal-action modal-close transparent">
+                        <i class="material-icons">arrow_back</i>
+                    </a>
+                </li>
+            </ul>
+            <span class="brand-logo hide-on-small-only">Categorías</span>
+            <ul class="right">
+                <li>
+                    <a mz-button mz-tooltip href="javascript:void(0);"
+                       [flat]="true"
+                       [float]="true"
+                       [delay]="0"
+                       [tooltip]="'Guardar'"
+                       (click)="saveCategory()"
+                       id="save-form"
+                       [disabled]="!categoriesForm.valid"
+                       class="transparent">
+                        <i class="material-icons">save</i>
+                    </a>
+                </li>
+                <li>
+                    <renova-online-help-button></renova-online-help-button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<form id="categories-form" [formGroup]="categoriesForm" (ngSubmit)="saveCategory()" novalidate>
+    <mz-input-container>
+        <input mz-input required
+               mz-validation
+               [label]="'Título'"
+               id="title"
+               name="title"
+               [errorMessageResource]="errorMessageResources.title"
+               formControlName="title"
+               [(ngModel)]="category.title"
+               type="text">
+    </mz-input-container>
+    <mz-input-container>
+        <input mz-input required
+               mz-validation
+               [label]="'Slug'"
+               id="slug"
+               name="slug"
+               [errorMessageResource]="errorMessageResources.slug"
+               formControlName="slug"
+               [(ngModel)]="category.slug"
+               type="text">
+    </mz-input-container>
+    <!--
+    <renova-autocomplete label="Value 2"
+                         [required]="true"
+                         name="category_id"
+                         id="category_id"
+                         formControlName="category_id"
+                         [values]="categories"
+                         [selected]="category.category_id"
+                         [(ngModel)]="category.category_id"
+                         [multiple]="false"
+                         placeholder="Select a dropdown value"></renova-autocomplete>
+                         -->
+
+    <renova-form-select
+            required
+            id="category_id"
+            name="category_id"
+            label="Categoría"
+            placeholder="Seleccione..."
+            formControlName="category_id"
+            [options]="categories"
+            [(ngModel)]="category.category_id">
+        <option *ngFor="let categoryOption of categories" [value]="categoryOption.id">{{categoryOption.title}}</option>
+    </renova-form-select>
+
+    <mz-textarea-container>
+    <textarea mz-textarea required
+              mz-validation
+              [label]="'Descripción'"
+              [errorMessageResource]="errorMessageResources.description"
+              formControlName="description"
+              [(ngModel)]="category.description"
+              (change)="setCategoryCategoryId($event)"
+              id="description"
+              name="description"></textarea>
+
+    </mz-textarea-container>
+    <!--
+    <mz-select-container>
+        <select mz-select
+                mz-validation
+                id="category_id"
+                name="category_id"
+                [errorMessageResource]="errorMessageResources.category_id"
+                formControlName="category_id"
+                [(ngModel)]="category.category_id"
+                [label]="'Padre'">
+            <option value="">Seleccione...</option>
+            <ng-container *ngFor="let categorySelect of categories">
+                <option *ngIf="(categorySelect.id !== category.id)" [value]="categorySelect.id">
+                    {{categorySelect.title}}
+                </option>
+            </ng-container>
+
+        </select>
+    </mz-select-container>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="category_id">Padre</label>
+            <select2 id="category_id"
+                     required
+                     name="category_id"
+                     formControlName="category_id"
+                     [value]="category.category_id"
+                     [data]="exampleData"
+                     [width]="300"
+                     [options]="options"></select2>
+
+        </div>
+    </div>
+    -->
+
+    {{categoriesForm.valid}}<br>
+    {{category | json}}<br>
+    {{categoriesForm.value | json}}<br>
+
+    <button type="submit" id="categories-form-submit-button" style="display: none; visibility: hidden"
+            [disabled]="!categoriesForm.valid">Submit
+    </button>
+    <div class="right" *ngIf="!modalMode">
+        <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+        <a href="javascript:void(0);"
+           class="modal-action modal-close waves-effect waves-green btn-flat"
+           (click)="saveCategory()">Guardar</a>
+    </div>
+</form>

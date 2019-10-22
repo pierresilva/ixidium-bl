@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class DummyClass extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+{
+    Schema::create('{{pivotTableName}}', function (Blueprint $table) {
+        $table->integer('{{columnOne}}_id')->unsigned()->index();
+        $table->integer('{{columnTwo}}_id')->unsigned()->index();
+        $table->primary(['{{columnOne}}_id', '{{columnTwo}}_id']);
+        {{foreign}}
+    });
+}
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+{
+    Schema::drop('{{pivotTableName}}');
+}
+}

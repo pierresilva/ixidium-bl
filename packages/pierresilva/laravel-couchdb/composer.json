@@ -1,0 +1,43 @@
+{
+  "name": "pierresilva/laravel-couchdb",
+  "description": "A CouchDB based Eloquent model and Query builder for Laravel",
+  "authors": [
+    {
+      "name": "Pierre Silva",
+      "email": "pierremichelsilva@gmail.com"
+    }
+  ],
+  "license" : "MIT",
+  "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/robsonvn/couchdb-client"
+        }
+  ],
+  "require": {
+    "illuminate/database": "5.4.*",
+    "illuminate/support": "5.4.*",
+    "illuminate/container": "5.4.*",
+    "illuminate/events": "5.4.*",
+    "doctrine/couchdb": "dev-master",
+    "adbario/php-dot-notation": "^1.2"
+  },
+  "require-dev":{
+    "laravel/passport": "^3.0.0",
+    "phpunit/phpunit": "@stable",
+    "orchestra/testbench": "^3.1",
+    "mockery/mockery": "^0.9"
+  },
+  "autoload": {
+        "psr-4": {
+            "pierresilva\\CouchDB\\": "src"
+        }
+   },
+   "autoload-dev": {
+       "classmap": [
+           "tests/TestCase.php",
+           "tests/models",
+           "tests/seeds"
+       ]
+   }
+}

@@ -1,0 +1,5 @@
+<!--<div [@enterAnimation]="errorMessage" class="invalid" *ngIf="(control.touched || control.dirty) && control.invalid && errorMessage">{{ errorMessage }}</div>-->
+
+<span class="invalid helper-text"
+      [@enterAnimation]="errorMessage"
+      *ngIf="(control.touched || control.dirty) && control.invalid && errorMessage">{{ errorMessage }}</span>

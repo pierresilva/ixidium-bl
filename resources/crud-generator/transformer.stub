@@ -1,0 +1,394 @@
+<?php
+
+namespace App\Modules\Corhuila\Transformers;
+
+
+use App\Umbrella\Transformer;
+use Carbon\Carbon;
+
+class TerceroTransformer extends Transformer
+{
+    protected $resourceName = 'data';
+
+    public function transform($data)
+    {
+        return [
+            'id_tercero' => [
+                'order' => 0,
+                'key' => 'id_tercero',
+                'type' => 'number',
+                'value' => $data['id_tercero'],
+                'label' => 'ID Tercero',
+                'description' => 'Esta es la id del tercero',
+                'options' => [],
+                'validation' => [
+                    'required' => false,
+                    'min' => 1,
+                    'max' => 99999999,
+                    'pattern' => '\d*'
+                ],
+                'colClass' => '4',
+                'display' => false,
+                'disabled' => true,
+            ],
+            'nom_tip_identificacion' => [
+                'order' => 1,
+                'key' => 'nom_tip_identificacion',
+                'type' => 'select',
+                'value' => $data['nom_tip_identificacion'],
+                'label' => 'Tipo de documento',
+                'description' => 'Tipo de documento de identidad',
+                'options' => [
+                    [
+                        'label' => 'Cédula de Ciudadanía',
+                        'value' => 'Cédula de Ciudadanía',
+                    ],
+                    [
+                        'label' => 'Tarjéta de Identidad',
+                        'value' => 'Tarjéta de Identidad',
+                    ],
+                    [
+                        'label' => 'Cédula de Extranjeria',
+                        'value' => 'Cédula de Extranjeria',
+                    ],
+                    [
+                        'label' => 'Pasaporte',
+                        'value' => 'Pasaporte',
+                    ],
+                    [
+                        'label' => 'Registro Civil',
+                        'value' => 'Registro Civil',
+                    ],
+                    [
+                        'label' => 'NUIP',
+                        'value' => 'NUIP',
+                    ],
+                    [
+                        'label' => 'Otro',
+                        'value' => 'Otro',
+                    ]
+                ],
+                'validation' => [
+                    'required' => true,
+                ],
+                'colClass' => '4',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'num_identificacion' => [
+                'order' => 2,
+                'key' => 'num_identificacion',
+                'type' => 'text',
+                'value' => $data['num_identificacion'],
+                'label' => 'Número de documento',
+                'description' => 'Número de documento de identidad',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                    'min' => 1000000,
+                    'max' => 999999999,
+                    'pattern' => '\d*'
+                ],
+                'colClass' => '4',
+                'display' => true,
+                'disabled' => true,
+            ],
+            'nom_largo' => [
+                'order' => 3,
+                'key' => 'nom_largo',
+                'type' => 'text',
+                'value' => $data['nom_largo'],
+                'label' => 'Nombre Completo',
+                'description' => 'Nombre con nombres y apellidos',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                ],
+                'colClass' => '12',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'pri_apellido' => [
+                'order' => 4,
+                'key' => 'pri_apellido',
+                'type' => 'text',
+                'value' => $data['pri_apellido'],
+                'label' => 'Primer apellido',
+                'description' => 'Primer apellido',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                    'minlength' => 4,
+                    'maxlength' => 16,
+                ],
+                'colClass' => '6',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'seg_apellido' => [
+                'order' => 5,
+                'key' => 'seg_apellido',
+                'type' => 'text',
+                'value' => $data['seg_apellido'],
+                'label' => 'Segúndo apellido',
+                'description' => 'Segúndo apellido',
+                'options' => [],
+                'validation' => [
+                    'required' => false,
+                    'minlength' => 4,
+                    'maxlength' => 16,
+                ],
+                'colClass' => '6',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'nom_tercero' => [
+                'order' => 6,
+                'key' => 'nom_tercero',
+                'type' => 'text',
+                'value' => $data['nom_tercero'],
+                'label' => 'Primer nombre',
+                'description' => 'Primer nombre',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                    'minlength' => 4,
+                    'maxlength' => 16,
+                ],
+                'colClass' => '6',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'seg_nombre' => [
+                'order' => 7,
+                'key' => 'seg_nombre',
+                'type' => 'text',
+                'value' => $data['seg_nombre'],
+                'label' => 'Segúndo nombre',
+                'description' => 'Segúndo nombre',
+                'options' => [],
+                'validation' => [
+                    'required' => false,
+                    'minlength' => 4,
+                    'maxlength' => 16,
+                ],
+                'colClass' => '6',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'dir_pais' => [
+                'order' => 8,
+                'key' => 'dir_pais',
+                'type' => 'text',
+                'value' => $data['dir_pais'] ? $data['dir_pais'] : 'Colombia',
+                'label' => 'País',
+                'description' => 'Pais de residencia',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                ],
+                'colClass' => '4',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'dir_departamento' => [
+                'order' => 9,
+                'key' => 'dir_departamento',
+                'type' => 'text',
+                'value' => $data['dir_departamento'] ? $data['dir_departamento'] : 'Huila',
+                'label' => 'Departamento',
+                'description' => 'Departamento de residencia',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                ],
+                'colClass' => '4',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'dir_ciudad' => [
+                'order' => 10,
+                'key' => 'dir_ciudad',
+                'type' => 'text',
+                'value' => $data['dir_ciudad'] ? $data['dir_ciudad'] : 'Neiva',
+                'label' => 'Ciudad',
+                'description' => 'Ciudad de residencia',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                ],
+                'colClass' => '4',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'dir_residencia' => [
+                'order' => 11,
+                'key' => 'dir_residencia',
+                'type' => 'text',
+                'value' => $data['dir_residencia'],
+                'label' => 'Dirección',
+                'description' => 'Dirección de su residencia',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                    'minlenght' => 10,
+                    'maxlenght' => 254,
+                ],
+                'colClass' => '12',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'nom_gen_tercero' => [
+                'order' => 12,
+                'key' => 'nom_gen_tercero',
+                'type' => 'radiobutton',
+                'value' => $data['nom_gen_tercero'],
+                'label' => 'Género',
+                'description' => 'Seleccione su genero',
+                'options' => [
+                    [
+                        'label' => 'Masculino',
+                        'value' => 'masculino',
+                    ],
+                    [
+                        'label' => 'Femenino',
+                        'value' => 'femenino',
+                    ],
+                    [
+                        'label' => 'Otro',
+                        'value' => 'otro',
+                    ]
+                ],
+                'validation' => [
+                    'required' => true,
+                ],
+                'colClass' => '12',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'nom_est_civil' => [
+                'order' => 13,
+                'key' => 'nom_est_civil',
+                'type' => 'select',
+                'value' => $data['nom_est_civil'],
+                'label' => 'Estado civil',
+                'description' => 'Seleccione su estado civil',
+                'options' => [
+                    [
+                        'label' => 'Solter@',
+                        'value' => 'Soltero',
+                    ],
+                    [
+                        'label' => 'Casad@',
+                        'value' => 'Casado',
+                    ],
+                    [
+                        'label' => 'Separad@',
+                        'value' => 'Separado',
+                    ],
+                    [
+                        'label' => 'Divorciad@',
+                        'value' => 'Divorciado',
+                    ],
+                    [
+                        'label' => 'Union libre',
+                        'value' => 'Union libre',
+                    ],
+                    [
+                        'label' => 'Viud@',
+                        'value' => 'Viudo',
+                    ],
+                    [
+                        'label' => 'Religios@',
+                        'value' => 'Religioso',
+                    ],
+                    [
+                        'label' => 'Otro',
+                        'value' => 'otro',
+                    ]
+                ],
+                'validation' => [
+                    'required' => true,
+                ],
+                'colClass' => '12',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'fec_nacimiento' => [
+                'order' => 14,
+                'key' => 'fec_nacimiento',
+                'type' => 'date',
+                'value' => $data['fec_nacimiento'],
+                'label' => 'Fecha de nacimiento',
+                'description' => 'Ingrese su fecha de nacimiento',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                    'min' => $this->minDate(50),
+                    'max' => $this->maxDate(14),
+                ],
+                'colClass' => '12',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'tel_residencia' => [
+                'order' => 15,
+                'key' => 'tel_residencia',
+                'type' => 'text',
+                'value' => $data['tel_residencia'],
+                'label' => 'Teléfono fijo',
+                'description' => 'Número de teléfono fijo',
+                'options' => [],
+                'validation' => [
+                    'required' => false,
+                ],
+                'colClass' => '12',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'tel_celular' => [
+                'order' => 16,
+                'key' => 'tel_celular',
+                'type' => 'text',
+                'value' => $data['tel_celular'],
+                'label' => 'Teléfono celular',
+                'description' => 'Número de teléfono móvil',
+                'options' => [],
+                'validation' => [
+                    'required' => false,
+                ],
+                'colClass' => '12',
+                'display' => true,
+                'disabled' => false,
+            ],
+            'dir_email' => [
+                'order' => 17,
+                'key' => 'dir_email',
+                'type' => 'email',
+                'value' => $data['dir_email'],
+                'label' => 'Email',
+                'description' => 'Dirección de correo electrónico',
+                'options' => [],
+                'validation' => [
+                    'required' => true,
+                    'pattern' => true,
+                ],
+                'colClass' => '12',
+                'display' => true,
+                'disabled' => false,
+            ],
+        ];
+    }
+
+    protected function maxDate($years) {
+        $maxDate = Carbon::now()->subYears($years)->toDateString();
+
+        return $maxDate;
+    }
+
+    protected function minDate($years) {
+        $minDate = Carbon::now()->subYears($years)->toDateString();
+
+        return $minDate;
+    }
+}

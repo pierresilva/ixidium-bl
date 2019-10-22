@@ -1,0 +1,32 @@
+<div class="content">
+  <div class="row">
+    <div class="col s12">
+      <renova-image-upload></renova-image-upload>
+      <button type="button" (click)="popup('http://renova.test/elfinder', '', 800, 200);">Add My Card</button>
+      <br>
+      <span id="retrievedData">No data yet.</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <mz-datepicker-container class="col s12">
+        <input mz-datepicker
+               [label]="'Date of birth'"
+               [options]="datepickerOptionsOne"
+               [(ngModel)]="dateOfBirth"
+               (change)="changeOption($event)"
+               id="datepicker"
+               placeholder="Select your birth date"
+               type="text">
+      </mz-datepicker-container>
+      <mz-datepicker-container class="col s12">
+        <input mz-datepicker
+               [label]="'Other Date of birth'"
+               [options]="datepickerOptionsTwo"
+               id="datepickerTwo"
+               placeholder="Select other birthday"
+               type="text">
+      </mz-datepicker-container>
+    </div>
+  </div>
+</div>

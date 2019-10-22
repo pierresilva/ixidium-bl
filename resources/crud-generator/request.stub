@@ -1,0 +1,57 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class DummyClassRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return {{authorize}};
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return {{validationRules}};
+    }
+
+    /**
+     * Respuesta en formato JSON si existen errores en el request
+     *
+     * @param  array  $errors
+     *
+     * @return JSON response()
+     */
+
+    public function response(array $errors)
+    {
+        return response([
+            'message' => 'El formulario contiene errores!',
+            'errors'  => $errors,
+        ], 400);
+    }
+
+    /**
+     * Get the response for a forbidden operation.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function forbiddenResponse()
+    {
+        return response()->json([
+            'message' => 'No esta autorizado!',
+            'errors' => [],
+        ], 401);
+    }
+}

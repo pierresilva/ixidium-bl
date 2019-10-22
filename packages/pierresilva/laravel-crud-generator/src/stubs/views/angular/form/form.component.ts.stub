@@ -1,0 +1,89 @@
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {crud_name_singular} from '../models/crud_name_dash_singular';
+import {MzToastService} from 'ngx-materialize';
+import {ApiService} from '../../../../shared/services/api.service';
+import {MzDatepickerOptions} from '../../../../shared/clasess/mz-datepicker-options';
+
+declare var $: any
+
+@Component({
+    selector: 'renova-crud_name_dash-form',
+    templateUrl: './crud_name_dash-form.component.html',
+    styleUrls: ['./crud_name_dash-form.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+})
+
+export class crud_nameFormComponent implements OnInit {
+    crud_name_camel_singular: crud_name_singular;
+    modalMode: false;
+    datepickerOptions = new MzDatepickerOptions().datepickerOptions;
+    crud_name_camelForm: FormGroup;
+
+    errorMessageResources = {
+        [[errorMessages]]
+    };
+
+    constructor(private api: ApiService,
+                private formBuilder: FormBuilder,
+                private toast: MzToastService) {
+    }
+
+    @Input() set modal(modal) {
+        this.modalMode = modal;
+    }
+
+    @Input() set crud_name_camel_singularIn(crud_name_camel_singular) {
+        this.crud_name_camel_singular = crud_name_camel_singular;
+    }
+
+    @Output() crud_name_camel_singularOut = new EventEmitter();
+
+    ngOnInit() {
+        // console.log(this.crud_name_camel_singular);
+        this.buildForm();
+    }
+
+    buildForm() {
+        this.crud_name_camelForm = this.formBuilder.group({
+            [[formValidations]]
+        });
+    }
+
+    sendcrud_name_singular() {
+        this.crud_name_camel_singularOut.emit(this.crud_name_camel_singular);
+        $('.modal').modal('close');
+        this.crud_name_camelForm.reset();
+    }
+
+    savecrud_name_singular() {
+        if (this.crud_name_camel_singular.id) {
+            this.api.put('[[crudUrl]]/' + this.crud_name_camel_singular.id, this.crud_name_camel_singular)
+                .subscribe(
+                    () => {
+                        this.toast.show(
+                            'Item actualizado con éxito!',
+                            5000,
+                            'green',
+                        );
+
+                        this.sendcrud_name_singular();
+                    }
+                );
+        } else {
+            this.api.post('[[crudUrl]]', this.crud_name_camel_singular)
+                .subscribe(
+                    () => {
+                        this.toast.show(
+                            'Item creado con éxito!',
+                            5000,
+                            'green',
+                        );
+
+                        this.sendcrud_name_singular();
+                    }
+                );
+        }
+    }
+}
+

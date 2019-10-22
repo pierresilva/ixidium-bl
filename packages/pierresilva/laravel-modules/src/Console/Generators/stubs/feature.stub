@@ -1,0 +1,24 @@
+<?php
+namespace DummyNamespace;
+
+use pierresilva\Foundation\Feature;
+use Illuminate\Http\Request;
+// Use Jobs Here
+
+class DummyClass extends Feature
+{
+    protected $id;
+
+    protected $data;
+
+    public function __construct($id, $data)
+    {
+        $this->id = $id;
+        $this->data = $data;
+    }
+
+    public function handle(Request $request)
+    {
+        // Run Jobs Here
+    }
+}

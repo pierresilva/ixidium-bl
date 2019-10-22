@@ -1,0 +1,21 @@
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {crud_nameComponent} from './crud_name_dash.component';
+
+const routes: Routes = [
+    {
+        path: '',
+        component: crud_nameComponent,
+        data: {
+            title: 'crud_title',
+        }
+    }
+];
+
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
+})
+
+export class crud_nameRoutingModule {
+}

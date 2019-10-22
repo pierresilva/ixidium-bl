@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Renova</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.6.95/css/materialdesignicons.min.css">
+</head>
+
+<body>
+  <renova-root>
+    <!-- use native css instead of mz-spinner because angular is not bootstraped
+       yet and therefore mz-spinner is not available while loading the app -->
+    <div class="preloader-container">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </renova-root>
+
+</body>
+
+</html>

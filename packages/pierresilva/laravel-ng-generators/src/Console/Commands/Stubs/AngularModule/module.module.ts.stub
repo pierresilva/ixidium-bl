@@ -1,0 +1,34 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { {{Module}}RoutingModule } from './{{module}}-routing.module';
+import { {{Component}}Component } from './{{component}}.component';
+import { SharedModule } from '../../shared/shared.module';
+
+// generated components imports here //
+
+// generated services imports here //
+
+@NgModule({
+  imports: [
+    CommonModule,
+    {{Module}}RoutingModule,
+    SharedModule,
+  ],
+  exports: [
+    {{Component}}Component,
+    // generated components declarations here //
+  ],
+  declarations: [
+      {{Component}}Component,
+      // generated components declarations here //
+  ],
+  providers: [
+    // generated services providers here //
+  ],
+  entryComponents: [
+    {{Component}}Component,
+    // generated components declarations classes here //
+  ],
+})
+export class {{Module}}Module { }

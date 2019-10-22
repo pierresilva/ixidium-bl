@@ -1,0 +1,85 @@
+<mz-input-container>
+    <i mz-icon
+       mz-input-prefix
+       [icon]="'search'">
+    </i>
+    <input mz-input
+           [label]="'Buscar'"
+           id="search-categories"
+           length="150"
+           (keyup.enter)="getCategories()"
+           type="text">
+</mz-input-container>
+<table class="responsive-table">
+    <thead>
+    <tr>
+        <th>Título</th>
+        <th>Slug</th>
+        <th>Descripción</th>
+        <th>Padre</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody *ngIf="categories.length < 1">
+    <tr>
+        <td colspan="5">
+            No hay resultados
+        </td>
+    </tr>
+    </tbody>
+    <tbody *ngIf="categories.length > 0">
+    <tr *ngFor="let category of categories">
+        <td>{{category.title}}</td>
+        <td>{{category.slug}}</td>
+        <td>{{category.description}}</td>
+        <td>{{category.parent !== null ? category.parent.title : ''}}</td>
+
+        <td>
+            <a (click)="editCategory(category); categoriesModal.openModal()"
+               style="cursor: pointer;"
+               [id]="'category-edit-' + category.id">
+                <i class="material-icons">edit</i>
+            </a>&nbsp;&nbsp;
+            <a (click)="deleteCategory(category)"
+               style="cursor: pointer;"
+               [id]="'category-delete-' + category.id">
+                <i class="material-icons">delete</i>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<renova-pagination
+        (goPage)="getCategories($event)"
+        (goNext)="getCategories(meta.current_page + 1)"
+        (goPrev)="getCategories(meta.current_page - 1)"
+        [pagesToShow]="10"
+        [page]="meta.current_page"
+        [perPage]="meta.per_page"
+        [count]="meta.total"></renova-pagination>
+
+<mz-modal #categoriesModal
+          class="modal-fixed-header modal-no-footer"
+          [fullscreen]="true"
+          id="categories-modal">
+    <mz-modal-content>
+        <renova-categories-form [(categoryIn)]="category"
+                                (categoryOut)="getCategories()"
+                                [modal]="true"
+                                #categoriesForm></renova-categories-form>
+    </mz-modal-content>
+</mz-modal>
+
+<a mz-button
+   mz-tooltip
+   [tooltip]="'Nueva Categorías'"
+   [position]="'left'"
+
+   [delay]="0"
+   [float]="true"
+   [large]="true"
+   (click)="newCategory(); categoriesModal.openModal()"
+   class="list-add-button red">
+    <i class="material-icons i-large">add</i>
+</a>

@@ -1,0 +1,33 @@
+<nav class="top-nav">
+  <div class="container">
+    <div class="nav-wrapper" id="admi-cities-title">
+      <a class="page-title">Commands</a>
+    </div>
+  </div>
+</nav>
+<div>
+  <div class="container">
+    <div class="row">
+      <form id="command-form" novalidate>
+        <mz-input-container class="col m12">
+          <input mz-input
+                 [label]="'Comando'"
+                 id="command"
+                 name="command"
+                 [(ngModel)]="command"
+                 type="text">
+        </mz-input-container>
+        <div class="col m2">
+          <button [disabled]="!command" (click)="sendCommand()" mz-button>
+            Run
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="row" id="output">
+      <div class="col s12" [innerHTML]="output">
+
+      </div>
+    </div>
+  </div>
+</div>

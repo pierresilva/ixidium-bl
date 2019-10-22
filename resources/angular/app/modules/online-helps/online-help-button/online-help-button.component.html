@@ -1,0 +1,12 @@
+<a mz-button mz-tooltip
+       *ngIf="help"
+       href="javascript:void(0);"
+       [flat]="true"
+       [float]="true"
+       [delay]="0"
+       [tooltip]="'Ayuda'"
+       id="online-help"
+       (click)="showHelp()"
+       class="transparent">
+  <i class="material-icons">help</i>
+</a>

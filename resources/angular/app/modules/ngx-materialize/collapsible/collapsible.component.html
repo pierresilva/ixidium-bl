@@ -1,0 +1,7 @@
+<ul #collapsible
+  class="collapsible"
+  [class.popout]="popout"
+  [hidden]="items.length === 0"
+>
+  <ng-content></ng-content>
+</ul>

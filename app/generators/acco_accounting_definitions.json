@@ -1,0 +1,95 @@
+{
+  "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "label": "Código"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "label": "Nombre"
+    },
+    {
+      "name": "accounting_concept_id",
+      "type": "string",
+      "label": "Concepto contable",
+      "options": [
+        {
+          "label": "Uno",
+          "value": "uno"
+        },
+        {
+          "label": "Dos",
+          "value": "dos"
+        }
+      ]
+    },
+    {
+      "name": "value_vertical",
+      "type": "string",
+      "label": "Valor Vertical"
+    },
+    {
+      "name": "value_accounting",
+      "type": "string",
+      "label": "Valor Contable"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "label": "Estado",
+      "options": [
+        {
+          "label": "Activo",
+          "value": "active"
+        },
+        {
+          "label": "Inactivo",
+          "value": "inactive"
+        }
+      ]
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "accounting_concept_id",
+      "references": "id",
+      "on": "acco_accounting_concepts",
+      "onDelete": "cascade"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "accountingConcept",
+      "type": "belongsTo",
+      "class": "App\\Modules\\Accounting\\Models\\AccoAccountingConcept"
+    }
+  ],
+  "validations": [
+    {
+      "field": "name",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "code",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "accounting_concept_id",
+      "rules": "required"
+    },
+    {
+      "field": "value_vertical",
+      "rules": "required"
+    },
+    {
+      "field": "value_accounting",
+      "rules": "required"
+    },
+    {
+      "field": "status",
+      "rules": "required"
+    }
+  ]
+}

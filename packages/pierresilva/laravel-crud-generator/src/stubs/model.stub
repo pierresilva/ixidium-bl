@@ -1,0 +1,43 @@
+<?php
+
+namespace {{modelNamespace}};
+
+use Illuminate\Database\Eloquent\Model;
+{{useSoftDeletes}}
+use App\Traits\ActivityLogTrait;
+
+class DummyClass extends Model
+{
+    use ActivityLogTrait;
+    {{softDeletes}}/**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = '{{table}}';
+
+    {{primaryKey}}
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = {{fillable}};
+
+    {{relationships}}
+
+
+    public static function boot() {
+        parent::boot();
+        self::creating(function ($model) {
+            //
+        });
+        self::updating(function ($model) {
+            //
+        });
+        self::deleting(function($model) {
+            //
+        });
+    }
+}

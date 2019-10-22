@@ -1,0 +1,20 @@
+<?php
+
+namespace DummyNamespace;
+
+use pierresilva\Repository\Repositories\EloquentRepository;
+
+class DummyClass extends EloquentRepository
+{
+    /**
+     * @var \DummyModel
+     */
+    public $model = \DummyModel::class;
+
+    /**
+     * @var array
+     */
+    public $tag = ['DummyTagModel'];
+
+
+}

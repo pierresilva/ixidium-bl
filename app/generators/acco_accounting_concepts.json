@@ -1,0 +1,41 @@
+{
+  "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "label": "Código"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "label": "Nombre"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "label": "Estado",
+      "options": [
+        {
+          "label": "Activo",
+          "value": "active"
+        },
+        {
+          "label": "Inactivo",
+          "value": "inactive"
+        }
+      ]
+    }
+  ],
+  "foreign_keys": [],
+  "relationships": [],
+  "validations": [{
+    "field": "name",
+    "rules": "required|max:128"
+  },{
+    "field": "code",
+    "rules": "required|max:128"
+  },{
+    "field": "status",
+    "rules": "required"
+  }]
+}

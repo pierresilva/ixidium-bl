@@ -1,0 +1,117 @@
+{
+  "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "label": "Código"
+    },
+    {
+      "name": "accounting_group",
+      "type": "string",
+      "label": "Nombre"
+    },
+    {
+      "name": "bussiness",
+      "type": "string",
+      "label": "Negocio"
+    },
+    {
+      "name": "bussiness_unit",
+      "type": "string",
+      "label": "Unidad de Negocio"
+    },
+    {
+      "name": "object_account",
+      "type": "string",
+      "label": "Objeto de la cuenta"
+    },
+    {
+      "name": "subsidiary_account",
+      "type": "string",
+      "label": "Subsidio de la cuenta"
+    },
+    {
+      "name": "bussiness_unit_ipo",
+      "type": "string",
+      "label": "IPO Consumo Unidad"
+    },
+    {
+      "name": "object_account_ipo",
+      "type": "string",
+      "label": "Objeto IPO Consumo Unidad"
+    },
+    {
+      "name": "subsidiary_account_ipo",
+      "type": "string",
+      "label": "Subsidio IPO Consumo de la cuenta"
+    },
+    {
+      "name": "bussiness_unit_iva",
+      "type": "string",
+      "label": "IVA Unidad"
+    },
+    {
+      "name": "object_account_iva",
+      "type": "string",
+      "label": "Objeto IVA Unidad"
+    },
+    {
+      "name": "subsidiary_account_iva",
+      "type": "string",
+      "label": "Subsidio IVA Unidad"
+    },
+    {
+      "name": "grouped",
+      "type": "boolean",
+      "label": "Agrupado"
+    },
+    {
+      "name": "requires_third",
+      "type": "boolean",
+      "label": "Requiere tercero"
+    },
+    {
+      "name": "status",
+      "type": "select",
+      "label": "Estado",
+      "options": [
+        {
+          "label": "Activo",
+          "value": "active"
+        },
+        {
+          "label": "Inactivo",
+          "value": "inactive"
+        }
+      ]
+    }
+  ],
+  "foreign_keys": [],
+  "relationships": [],
+  "validations": [
+    {
+      "field": "accounting_group",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "code",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "bussiness",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "bussiness_unit",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "object_account",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "status",
+      "rules": "required"
+    }
+  ]
+}

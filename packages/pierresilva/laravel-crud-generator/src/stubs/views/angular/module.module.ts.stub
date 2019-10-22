@@ -1,0 +1,26 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {SharedModule} from '../../../shared/shared.module';
+
+import {crud_nameRoutingModule} from './crud_name_dash-routing.module';
+import {crud_nameListComponent} from './crud_name_dash-list/crud_name_dash-list.component';
+import {crud_nameFormComponent} from './crud_name_dash-form/crud_name_dash-form.component';
+import {crud_nameComponent} from './crud_name_dash.component';
+
+
+@NgModule({
+    imports: [
+        CommonModule,
+        crud_nameRoutingModule,
+        SharedModule,
+    ],
+    declarations: [
+        crud_nameListComponent,
+        crud_nameFormComponent,
+        crud_nameComponent,
+    ],
+    entryComponents: []
+})
+
+export class crud_nameModule {
+}

@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'CoconRegular';
+    src: url('#{$cocon-font-path}Cocon-Regular.eot');
+    src: url('#{$cocon-font-path}/Cocon-Regular.eot?#iefix') format('embedded-opentype'),
+    url('#{$cocon-font-path}/Cocon-Regular.woff2') format('woff2'),
+    url('#{$cocon-font-path}/Cocon-Regular.woff') format('woff'),
+    url('#{$cocon-font-path}/Cocon-Regular.ttf') format('truetype'),
+    url('#{$cocon-font-path}/Cocon-Regular.svg#Cocon-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CoconLight';
+    src: url('#{$cocon-font-path}/Cocon-Light.eot');
+    src: url('#{$cocon-font-path}/Cocon-Light.eot?#iefix') format('embedded-opentype'),
+    url('#{$cocon-font-path}/Cocon-Light.woff2') format('woff2'),
+    url('#{$cocon-font-path}/Cocon-Light.woff') format('woff'),
+    url('#{$cocon-font-path}/Cocon-Light.ttf') format('truetype'),
+    url('#{$cocon-font-path}/Cocon-Light.svg#Cocon-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CoconBold';
+    src: url('#{$cocon-font-path}/Cocon-Bold.eot');
+    src: url('#{$cocon-font-path}/Cocon-Bold.eot?#iefix') format('embedded-opentype'),
+    url('#{$cocon-font-path}/Cocon-Bold.woff2') format('woff2'),
+    url('#{$cocon-font-path}/Cocon-Bold.woff') format('woff'),
+    url('#{$cocon-font-path}/Cocon-Bold.ttf') format('truetype'),
+    url('#{$cocon-font-path}/Cocon-Bold.svg#Cocon-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.cocon-font {
+    font-family: "CoconRegular", serif;
+}
+
+.cocon-font-light {
+    font-family: "CoconLight", serif;
+}
+
+.cocon-font-bold {
+    font-family: "CoconBold", serif;
+}

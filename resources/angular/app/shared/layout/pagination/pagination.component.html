@@ -1,0 +1,25 @@
+<ul class="pagination center" *ngIf="count > 0">
+    <li class="count left">
+        {{getMin()}} a {{getMax()}} de {{count}}
+    </li>
+    <li class="waves-effect" [ngClass]="{disabled: (page === 1)}">
+        <a href="javascript:void(0);" (click)="(page === 1) ? false : onPrev()">
+            <i class="material-icons">chevron_left</i>
+        </a>
+    </li>
+    <li class="waves-effect"
+        *ngFor="let pageNum of getPages()"
+        [ngClass]="{active: (page === pageNum)}">
+        <a href="javascript:void(0);"
+           (click)="onPage(pageNum)">{{pageNum}}</a>
+    </li>
+    <li class="waves-effect" [ngClass]="{disabled: !(page < totalPages())}">
+        <a href="javascript:void(0);"
+           (click)="!(page < totalPages()) ? false : onNext()">
+            <i class="material-icons">chevron_right</i>
+        </a>
+    </li>
+</ul>
+<div>
+
+</div>

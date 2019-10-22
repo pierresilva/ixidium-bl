@@ -1,0 +1,68 @@
+<!-- <div>
+    <label *ngIf="label" [attr.for]="identifier">{{label}}</label>
+    <select class="browser-default"
+            [(ngModel)]="value"
+            [ngClass]="{invalid: (invalid | async)}"
+            [id]="identifier">
+        <option value="" disabled selected *ngIf="placeholder">{{placeholder}}</option>
+        <ng-content></ng-content>
+    </select>
+    <validation
+            [@flyInOut]="'in,out'"
+            *ngIf="invalid | async"
+            [messages]="failures | async">
+    </validation>
+</div> -->
+
+<div class="input-field col" [ngClass]="class ? class : 's12'">
+  <div class="select-wrapper">
+    <span class="caret" [id]="'select-caret-' + thisIdentifier">▼</span>
+    <input [id]="'input-select-' + thisIdentifier"
+           type="text"
+           class="select-dropdown"
+           readonly="true"
+           [ngClass]="(required && !value) ? 'invalid' : ''"
+           [value]="getCurrentText()">
+    <label [attr.for]="'basic-select-' + thisIdentifier"
+           style="left: 0;"
+           [ngClass]="(required && null === value) ? 'red-text' : ''"
+           [attr.data-error]="validationMessages.error"
+           [attr.data-success]="validationMessages.success">
+      {{label}} <span *ngIf="required" class="red-text">*</span>
+    </label>
+    <select [id]="'basic-select-' + thisIdentifier"
+            class="initialized"
+            [(ngModel)]="value">
+      <option *ngIf="!required" value="null">{{placeholder}}</option>
+      <option *ngFor="let option of selectOptions" [value]="option.id" [selected]="value === option.id">
+        {{option.text}}
+      </option>
+    </select>
+
+    <ul [id]="'select-options-' + thisIdentifier"
+        class="dropdown-content select-dropdown select-options select-options-hidden"
+        style="position: absolute; top: 0px; left: 0px; background: #fff;">
+      <li *ngIf="!required && placeholder" id="null" class="disabled">
+        <span>{{placeholder}}</span>
+      </li>
+      <li *ngFor="let option of filteredOptions" data-id="{{option.id}}" class="">
+        <span>{{option.text}}</span>
+      </li>
+      <input [id]="'search-select-' + thisIdentifier" (keyup)="filterOptions($event)"
+             placeholder="Buscar" type="text"
+             style="position: absolute;
+                       top: 0px; left: 0px;
+                       width: calc(100% - 20px);
+                       padding-left: 10px;
+                       padding-right: 10px;
+                       background: #fff;">
+    </ul>
+
+  </div>
+
+</div>
+
+
+
+
+

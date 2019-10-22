@@ -1,0 +1,92 @@
+{
+  "fields": [
+    {
+      "name": "third_party_id",
+      "type": "string",
+      "label": "Tercero"
+    },
+    {
+      "name": "type_consultant_id",
+      "type": "select",
+      "label": "Tipo Asesor",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "Some",
+          "value": "some"
+        }
+      ]
+    },
+    {
+      "name": "third_party_type_id",
+      "type": "select",
+      "label": "Tipo Tercero",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "Some",
+          "value": "some"
+        }
+      ]
+    },
+    {
+      "name": "signature_path",
+      "type": "file",
+      "label": "Firma"
+    },
+    {
+      "name": "user_id",
+      "type": "integer",
+      "label": "Usuario"
+    },
+    {
+      "name": "user_name",
+      "type": "string",
+      "label": "Nombre de Usuario"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "third_party_id",
+      "references": "id",
+      "on": "third_third_parties"
+    }
+  ],
+  "relationships": [{
+    "name": "thirdParty",
+    "type": "belongsTo",
+    "class": "App\\Modules\\ThirdParties\\Models\\ThirThirdParty"
+  }],
+  "validations": [
+    {
+      "field": "third_party_id",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "type_consultant_id",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "third_party_type_id",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "signature_path",
+      "rules": "required"
+    },
+    {
+      "field": "user_id",
+      "rules": "required"
+    },
+    {
+      "field": "user_name",
+      "rules": "required|max:128"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+:host #{'/deep/'} {
+  .collapsible-header {
+
+    padding: 0 32px;
+
+    i {
+      color: rgba(0,0,0,0.54);
+    }
+  }
+
+  .collapsible-body {
+    li {
+      a {
+        font-weight: initial;
+      }
+    }
+  }
+}

@@ -1,0 +1,206 @@
+<nav class="top-nav">
+  <div class="container">
+    <div class="nav-wrapper" id="posts-title">
+      <a class="page-title">Auditoria: Seguimiento</a>
+    </div>
+  </div>
+</nav>
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <mz-input-container>
+          <i mz-icon
+             mz-input-prefix
+             [icon]="'search'">
+          </i>
+          <input mz-input
+                 [label]="'Buscar'"
+                 id="search-activity"
+                 length="150"
+                 (keyup.enter)="getData()"
+                 type="text">
+        </mz-input-container>
+
+        <div class="row" style="padding-left: 2%; font-weight: bold;">
+          <div class="col s1">Item ID</div>
+          <div class="col s2">Log</div>
+          <div class="col s1">Descripción</div>
+          <div class="col s4">Modelo</div>
+          <div class="col s2">Causante</div>
+          <div class="col s2">Fecha</div>
+        </div>
+
+        <ng-container *ngIf="activities?.length">
+          <mz-collapsible
+            [mode]="'expandable'"
+            [popout]="true">
+
+            <mz-collapsible-item *ngFor="let activity of activities">
+              <mz-collapsible-item-header style="width: 100%;">
+                <div class="row">
+                  <div class="col s1">{{activity?.subject_id}}</div>
+                  <div class="col s2">{{activity?.log_name}}</div>
+                  <div class="col s1" style="color: blue; text-decoration: underline;">{{activity?.description}}</div>
+                  <div class="col s4">{{activity?.subject_type}}</div>
+                  <div class="col s2">{{activity?.causer?.name}}</div>
+                  <div class="col s2">{{activity?.created_at | amTimeAgo}}</div>
+                </div>
+              </mz-collapsible-item-header>
+              <mz-collapsible-item-body>
+                <table>
+                  <tr *ngIf="activity?.properties?.attributes && !activity?.differences"
+                      [id]="'changes-' + activity.id">
+                    <td colspan="6">
+                      <table class="responsive-table striped bordered">
+                        <thead>
+                        <tr>
+                          <td><b>Campo</b></td>
+                          <td><b>Valor</b></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <ng-container
+                          *ngFor="let key of objectKeys(activity.properties?.attributes)">
+                          <tr *ngIf="(key !== 'updated_at' && key !== 'created_at' && key !== 'deleted_at')">
+                            <td>
+                              <b>{{key}}</b>
+                            </td>
+                            <td>
+                              {{(activity.properties?.attributes[key])}}
+                            </td>
+                          </tr>
+                        </ng-container>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr *ngIf="activity.differences" [id]="'changes-' + activity.id">
+                    <td colspan="6">
+                      <table class="responsive-table striped bordered">
+                        <thead>
+                        <tr>
+                          <td><b>CAMBIOS</b></td>
+                          <td><b>Antes</b></td>
+                          <td><b>Despues</b></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <ng-container *ngFor="let key of objectKeys(activity.differences)">
+                          <tr *ngIf="(key !== 'updated_at' && key !== 'created_at' && key !== 'deleted_at')">
+                            <td>
+                              <b>{{key}}</b>
+                            </td>
+                            <td>
+                              {{activity.differences[key][0]}}
+                            </td>
+                            <td>
+                              {{activity.differences[key][1]}}
+                            </td>
+                          </tr>
+                        </ng-container>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </mz-collapsible-item-body>
+            </mz-collapsible-item>
+
+          </mz-collapsible>
+        </ng-container>
+        <ng-container *ngIf="!activities?.length">
+          No hay cambios.
+        </ng-container>
+
+        <!--<table class="responsive-table bordered">
+            <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Log</th>
+                <th>Descripción</th>
+                <th>Modelo</th>
+                <th>Causante</th>
+                <th>Fecha</th>
+            </tr>
+            </thead>
+            <tbody [id]="activity.id"
+                   *ngFor="let activity of activities"
+                   (click)="toggleTr($event, activity.id)"
+                   [ngClass]="activity.differences || activity.properties?.attributes ? 'toggle-diffs' : ''">
+            <tr>
+                <td>{{activity.subject_id}}</td>
+                <td>{{activity.log_name}}</td>
+                <td style="color: blue; text-decoration: underline;">{{activity.description}}</td>
+                <td>{{activity.subject_type}}</td>
+                <td>{{activity.causer.name}}</td>
+                <td>{{activity.created_at | amTimeAgo}}</td>
+            </tr>
+            <tr *ngIf="activity.properties?.attributes && !activity.differences" [id]="'changes-' + activity.id"
+                class="hidden">
+                <td colspan="6">
+                    <table class="responsive-table striped bordered">
+                        <thead>
+                        <tr>
+                            <td><b>Campo</b></td>
+                            <td><b>Valor</b></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <ng-container *ngFor="let key of objectKeys(activity.properties?.attributes)">
+                            <tr *ngIf="(key !== 'updated_at' && key !== 'created_at' && key !== 'deleted_at')">
+                                <td>
+                                    <b>{{key}}</b>
+                                </td>
+                                <td>
+                                    {{(activity.properties?.attributes[key])}}
+                                </td>
+                            </tr>
+                        </ng-container>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr *ngIf="activity.differences" [id]="'changes-' + activity.id" class="hidden">
+                <td colspan="6">
+                    <table class="responsive-table striped bordered">
+                        <thead>
+                        <tr>
+                            <td><b>CAMBIOS</b></td>
+                            <td><b>Antes</b></td>
+                            <td><b>Despues</b></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <ng-container *ngFor="let key of objectKeys(activity.differences)">
+                            <tr *ngIf="(key !== 'updated_at' && key !== 'created_at' && key !== 'deleted_at')">
+                                <td>
+                                    <b>{{key}}</b>
+                                </td>
+                                <td>
+                                    {{activity.differences[key][0]}}
+                                </td>
+                                <td>
+                                    {{activity.differences[key][1]}}
+                                </td>
+                            </tr>
+                        </ng-container>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>-->
+
+        <renova-pagination
+          (goPage)="getData($event)"
+          (goNext)="getData(meta.current_page + 1)"
+          (goPrev)="getData(meta.current_page - 1)"
+          [pagesToShow]="10"
+          [page]="meta.current_page"
+          [perPage]="meta.per_page"
+          [count]="meta.total"></renova-pagination>
+      </div>
+    </div>
+  </div>
+</div>

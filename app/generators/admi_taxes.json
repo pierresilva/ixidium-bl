@@ -1,0 +1,77 @@
+{
+  "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "label": "Código"
+    },
+    {
+      "name": "tax",
+      "type": "string",
+      "label": "Nombre"
+    },
+    {
+      "name": "type_tax",
+      "type": "select",
+      "label": "Tipo",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "Activo",
+          "value": "active"
+        }
+      ]
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "label": "Valor"
+    },
+    {
+      "name": "status",
+      "type": "select",
+      "label": "Estado",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "Activo",
+          "value": "active"
+        },
+        {
+          "label": "Inactivo",
+          "value": "inactive"
+        }
+      ]
+    }
+  ],
+  "foreign_keys": [],
+  "relationships": [],
+  "validations": [
+    {
+      "field": "tax",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "code",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "type_tax",
+      "rules": "required"
+    },
+    {
+      "field": "value",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "status",
+      "rules": "required"
+    }
+  ]
+}

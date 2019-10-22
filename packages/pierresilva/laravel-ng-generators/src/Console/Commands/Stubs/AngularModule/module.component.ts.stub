@@ -1,0 +1,27 @@
+import {Component, OnInit} from '@angular/core';
+import {ApiService} from '../../shared/services/api.service';
+
+declare var $: any;
+declare var Materialize: any;
+import * as moment from 'moment';
+
+@Component({
+    selector: 'renova-{{component}}',
+    templateUrl: './{{component}}.component.html',
+    styleUrls: ['./{{component}}.component.scss']
+})
+
+export class {{Component}}Component implements OnInit {
+    message: any;
+    constructor(private api: ApiService) { }
+
+    ngOnInit() {
+      this.api.get('{{component}}')
+        .subscribe(
+          data => {
+            this.message = data.message;
+          }
+        );
+    }
+
+}

@@ -1,0 +1,98 @@
+<?php
+
+namespace Tests\Unit;
+
+use Tests\TestCase;
+
+class DummyClassTest extends TestCase
+{
+    /**
+     * Default preparation for each test
+     *
+     */
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->prepareForTests();
+    }
+
+    //
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testBasicTest()
+    {
+        $this->assertTrue(true);
+    }
+
+    /**
+     * DummyClass Index Test
+     */
+    public function testDummyClassIndexTest()
+    {
+
+    }
+
+    /**
+     * DummyClass Create Test
+     */
+    public function testDummyClassCreateTest()
+    {
+
+    }
+
+    /**
+     * DummyClass Show Test
+     */
+    public function testDummyClassShowTest()
+    {
+
+    }
+
+    /**
+     * DummyClass Store Test
+     */
+    public function testDummyClassStoreTest()
+    {
+
+    }
+
+    /**
+     * DummyClass Edit Test
+     */
+    public function testDummyClassEditTest()
+    {
+
+    }
+
+    /**
+     * DummyClass Update Test
+     */
+    public function testDummyClassUpdateTest()
+    {
+
+    }
+
+    /**
+     * DummyClass Destroy Test
+     */
+    public function testDummyClassDestroyTest()
+    {
+
+    }
+
+    /**
+     * Migrates the database and set the mailer to 'pretend'.
+     * This will cause the tests to run quickly.
+     *
+     */
+    private function prepareForTests()
+    {
+        \Artisan::call('migrate:refresh --seed');
+        \Mail::pretend(true);
+    }
+}

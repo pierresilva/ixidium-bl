@@ -1,0 +1,50 @@
+<div class="modal-header" *ngIf="modalMode">
+    <nav>
+        <div class="nav-wrapper">
+            <ul class="left">
+                <li>
+                    <a mz-button mz-tooltip href="javascript:;"
+                       [flat]="true"
+                       [float]="true"
+                       [delay]="0"
+                       [tooltip]="'Cancelar'"
+                       id="close-form"
+                       class="modal-action modal-close transparent">
+                        <i class="material-icons">arrow_back</i>
+                    </a>
+                </li>
+            </ul>
+            <span class="brand-logo hide-on-small-only">crud_title</span>
+            <ul class="right">
+                <li>
+                    <a mz-button mz-tooltip href="javascript:;"
+                       [flat]="true"
+                       [float]="true"
+                       [delay]="0"
+                       [tooltip]="'Guardar'"
+                       (click)="savecrud_name_singular()"
+                       id="save-form"
+                       class="transparent">
+                        <i class="material-icons">save</i>
+                    </a>
+                </li>
+                <li>
+                    <renova-online-help-button></renova-online-help-button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<form id="crud_name_dash-form" [formGroup]="crud_name_camelForm" (ngSubmit)="savecrud_name_singular()" novalidate>
+    [[componentHtmlFormFields]]
+
+    <button type="submit" id="crud_name_dash-form-submit-button" style="display: none; visibility: hidden"
+            [disabled]="!crud_name_camelForm.valid">Submit
+    </button>
+    <div class="right" *ngIf="!modalMode">
+        <a href="javascript:;" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+        <a href="javascript:;"
+           class="modal-action modal-close waves-effect waves-green btn-flat"
+           (click)="savecrud_name_singular()">Guardar</a>
+    </div>
+</form>

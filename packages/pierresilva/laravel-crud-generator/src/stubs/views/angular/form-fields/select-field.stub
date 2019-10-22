@@ -1,0 +1,12 @@
+<mz-select-container>
+    <select mz-select %%required%%
+            mz-validation
+            id="%%itemName%%"
+            name="%%itemName%%"
+            [errorMessageResource]="errorMessageResources.%%itemName%%"
+            formControlName="%%itemName%%"
+            [(ngModel)]="%%crud_name_camel_singular%%.%%itemName%%"
+            [label]="'%%itemName%%'">
+        %%selectOptions%%
+    </select>
+</mz-select-container>

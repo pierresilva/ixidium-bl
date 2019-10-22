@@ -1,0 +1,21 @@
+$error-color: #e30613;
+$error-font-size: 0.8rem;
+$error-height: 19px;
+$error-opacity: 1;
+
+span.invalid {
+  color: $error-color;
+  font-size: $error-font-size;
+  opacity: $error-opacity;
+  overflow-wrap: break-word;
+}
+
+input:not([type="checkbox"]) + label + :host,
+mz-select-container :host,
+textarea + label + :host {
+
+  span.invalid {
+    margin-top: (-$error-height);
+    min-height: $error-height
+  }
+}

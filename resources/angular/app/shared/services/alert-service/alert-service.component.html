@@ -1,0 +1,12 @@
+<div id="alert-service-modal" class="modal">
+  <div *ngIf="message" [class]="message.modalClass">
+    <h5 *ngIf="message.title || message.title !== ''">{{message.title}}</h5>
+    <p>
+      {{message.text}}
+    </p>
+  </div>
+  <div *ngIf="message" [class]="message.modalFooterClass">
+    <a *ngIf="message.type === 'confirm'" href="javascript:void(0);" (click)="message.noFn()" [class]="message.modalButtonNoClass">NO</a>
+    <a href="javascript:void(0);" (click)="message.yesFn()" [class]="message.modalButtonYesClass" style="background-color: rgba(0,0,0,0.1);">ACEPTAR</a>
+  </div>
+</div>

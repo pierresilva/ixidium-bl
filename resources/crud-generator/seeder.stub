@@ -1,0 +1,20 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class {{seederClassName}} extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //
+
+        \{{modelNamespace}}\{{modelName}}::truncate();
+
+        factory(\{{modelNamespace}}\{{modelName}}::class, 10)->create();
+    }
+}

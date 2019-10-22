@@ -1,0 +1,28 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\ActivityLogTrait;
+
+class DummyClass extends Model
+{
+    use ActivityLogTrait;
+    public static $fqn = '\DummyNamespace\DummyClass';
+    protected static $logName = 'DummyClass';
+
+    //
+
+    public static function boot() {
+        parent::boot();
+        self::creating(function ($model) {
+            //
+        });
+        self::updating(function ($model) {
+            //
+        });
+        self::deleting(function($model) {
+            //
+        });
+    }
+}

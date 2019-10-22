@@ -1,0 +1,49 @@
+@import "../../../scss/variables";
+body {
+  min-height: 100vh;
+}
+
+/*
+.main-auth-page {
+  min-height: 100vh;
+  background-image: url("assets/images/backgrounds/bgrenova.jpg");
+  background-size: cover;
+  background-position: center -30em;
+  background-repeat: no-repeat;
+  vertical-align: top;
+}*/
+
+#auth-login {
+  padding-top: 50px;
+  margin: 0px;
+}
+
+.auth-form-body {
+  padding: 12px 24px;
+}
+
+.auth-form-header {
+  padding: 12px 24px 12px 12px;
+  background-color: $primary-color;
+  h4 {
+    font-size: 2rem;
+    line-height: 110%;
+    margin: 1rem 0 .8rem;
+    padding-top: 10px;
+  }
+  img.responsive-img-height {
+    max-height: 100%;
+    width: auto;
+    max-height: 64px;
+    max-width: 64px;
+    margin-top: 10px;
+  }
+}
+
+
+#video-background {
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: -100;
+}

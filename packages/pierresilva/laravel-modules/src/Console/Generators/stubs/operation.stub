@@ -1,0 +1,15 @@
+<?php
+
+namespace DummyNamespace;
+
+use pierresilva\Foundation\Operation;
+use Illuminate\Http\Request;
+// Use Jobs Here
+
+class DummyClass extends Operation
+{
+    public function handle(Request $request)
+    {
+        // Run Jobs Here
+    }
+}

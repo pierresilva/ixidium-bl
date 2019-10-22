@@ -1,0 +1,77 @@
+<mz-input-container>
+    <i mz-icon
+       mz-input-prefix
+       [icon]="'search'">
+    </i>
+    <input mz-input
+           [label]="'Buscar'"
+           id="search-crud_name_dash"
+           length="150"
+           (keyup.enter)="getcrud_name()"
+           type="text">
+</mz-input-container>
+<table class="responsive-table">
+    <thead>
+    <tr>
+        [[thItems]]
+        <th></th>
+    </tr>
+    </thead>
+    <tbody *ngIf="crud_name_camel.length < 1">
+    <tr>
+        <td colspan="[[itemsCount]]">
+            No hay resultados
+        </td>
+    </tr>
+    </tbody>
+    <tbody *ngIf="crud_name_camel.length > 0">
+    <tr *ngFor="let crud_name_camel_singular of crud_name_camel">
+        [[tdItems]]
+        <td>
+            <a (click)="editcrud_name_singular(crud_name_camel_singular); crud_name_camelModal.open()"
+               style="cursor: pointer;"
+               [id]="'crud_name_dash_singular-edit-' + crud_name_camel_singular.id">
+                <i class="material-icons">edit</i>
+            </a>
+            &nbsp;&nbsp;
+            <a (click)="deletecrud_name_singular(crud_name_camel_singular)"
+               style="cursor: pointer;"
+               [id]="'crud_name_dash_singular-delete-' + crud_name_camel_singular.id">
+                <i class="material-icons">delete</i>
+            </a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<renova-pagination
+    (goPage)="getcrud_name($event)"
+    (goNext)="getcrud_name(meta.current_page + 1)"
+    (goPrev)="getcrud_name(meta.current_page - 1)"
+    [pagesToShow]="10"
+    [page]="meta.current_page"
+    [perPage]="meta.per_page"
+    [count]="meta.total"></renova-pagination>
+
+<mz-modal #crud_name_camelModal
+          class="modal-fixed-header modal-no-footer"
+          [fullscreen]="true"
+          id="crud_name_dash-modal">
+    <mz-modal-content>
+        <renova-crud_name_dash-form [(crud_name_camel_singularIn)]="crud_name_camel_singular" (crud_name_camel_singularOut)="getcrud_name()" [modal]="true"></renova-crud_name_dash-form>
+    </mz-modal-content>
+</mz-modal>
+
+<a mz-button
+   mz-tooltip
+   [tooltip]="'Nueva crud_title'"
+   [position]="'left'"
+   [html]="true"
+   [delay]="0"
+   [float]="true"
+   [large]="true"
+   (click)="newcrud_name_singular(); crud_name_camelModal.open()"
+   class="list-add-button red">
+    <i class="material-icons i-large">add</i>
+</a>

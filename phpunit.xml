@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer">
+    <testsuites>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+        <testsuite name="AdministrationModule">
+            <directory suffix="Test.php">./app/Modules/Administration/Tests</directory>
+        </testsuite>
+        <testsuite name="CouchDBModule">
+            <directory suffix="Test.php">./app/Modules/CouchDB/Tests</directory>
+        </testsuite>
+        <testsuite name="MigrationModule">
+            <directory suffix="Test.php">./app/Modules/Migration/Tests</directory>
+        </testsuite>
+        <testsuite name="TransversalSecurityModule">
+            <directory suffix="Test.php">./app/Modules/TransversalSecurity/Tests</directory>
+        </testsuite>
+        <testsuite name="AccountingModule">
+            <directory suffix="Test.php">./app/Modules/Accounting/Tests</directory>
+        </testsuite>
+        <testsuite name="ThirdPartiesModule">
+            <directory suffix="Test.php">./app/Modules/ThirdParties/Tests</directory>
+        </testsuite>
+        <testsuite name="QuotationsModule">
+            <directory suffix="Test.php">./app/Modules/Quotations/Tests</directory>
+        </testsuite>
+        <testsuite name="ReservationModule">
+            <directory suffix="Test.php">./app/Modules/Reservation/Tests</directory>
+        </testsuite>
+        <testsuite name="TicketModule">
+            <directory suffix="Test.php">./app/Modules/Ticket/Tests</directory>
+        </testsuite>
+        <testsuite name="ReservationsModule">
+            <directory suffix="Test.php">./app/Modules/Reservations/Tests</directory>
+        </testsuite>
+        <testsuite name="PaymentModule">
+            <directory suffix="Test.php">./app/Modules/Payment/Tests</directory>
+        </testsuite>
+        <testsuite name="InvoicingModule">
+            <directory suffix="Test.php">./app/Modules/Invoicing/Tests</directory>
+        </testsuite>
+        <testsuite name="InvoicingModule">
+            <directory suffix="Test.php">./app/Modules/Invoicing/Tests</directory>
+        </testsuite>
+        <testsuite name="ReportsModule">
+            <directory suffix="Test.php">./app/Modules/Reports/Tests</directory>
+        </testsuite>
+        <testsuite name="LibraryModule">
+            <directory suffix="Test.php">./app/Modules/Library/Tests</directory>
+        </testsuite>
+        <testsuite name="LibraryModule">
+            <directory suffix="Test.php">./app/Modules/Library/Tests</directory>
+        </testsuite>
+        <testsuite name="GymsModule">
+            <directory suffix="Test.php">./app/Modules/Gyms/Tests</directory>
+        </testsuite>
+        <testsuite name="EmailCampaignsModule">
+            <directory suffix="Test.php">./app/Modules/EmailCampaigns/Tests</directory>
+        </testsuite>
+        <testsuite name="ParametersModule">
+            <directory suffix="Test.php">./app/Modules/Parameters/Tests</directory>
+        </testsuite>
+        <!-- generated modules test suits here -->
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="false">
+            <directory suffix=".php">./app</directory>
+            <exclude>
+                <directory>./app/Console</directory>
+                <directory>./app/Domains</directory>
+                <directory>./app/Exceptions</directory>
+                <directory>./app/Foundation</directory>
+                <directory>./app/Mail</directory>
+                <directory>./app/Notifications</directory>
+                <directory>./app/Renova</directory>
+                <directory>./app/Modules/Administration/Routes</directory>
+                <directory>./app/Modules/Administration/Database</directory>
+                <directory>./app/Modules/CouchDB/Routes</directory>
+                <directory>./app/Modules/CouchDB/Database</directory>
+                <directory>./app/Modules/Migration/Routes</directory>
+                <directory>./app/Modules/Migration/Database</directory>
+                <directory>./app/Modules/Pages/Routes</directory>
+                <directory>./app/Modules/Pages/Database</directory>
+                <directory>./app/Modules/TransversalSecurity/Routes</directory>
+                <directory>./app/Modules/TransversalSecurity/Database</directory>
+                <!--
+                <file>./app/LogModel.php</file>
+                <file>./app/PasswordReset.php</file>
+                <file>./app/ActivityLog.php</file>
+                <file>./app/User.php</file>
+                -->
+                <directory>./app/Modules/Accounting/Routes</directory>
+                <directory>./app/Modules/Accounting/Database</directory>
+                <directory>./app/Modules/ThirdParties/Routes</directory>
+                <directory>./app/Modules/ThirdParties/Database</directory>
+                <directory>./app/Modules/Reporter/Routes</directory>
+                <directory>./app/Modules/Reporter/Database</directory>
+                <directory>./app/Modules/Quotations/Routes</directory>
+                <directory>./app/Modules/Quotations/Database</directory>
+                <directory>./app/Modules/Reservation/Routes</directory>
+                <directory>./app/Modules/Reservation/Database</directory>
+                <directory>./app/Modules/Ticket/Routes</directory>
+                <directory>./app/Modules/Ticket/Database</directory>
+                <directory>./app/Modules/Reservations/Routes</directory>
+                <directory>./app/Modules/Reservations/Database</directory>
+                <directory>./app/Modules/Payment/Routes</directory>
+                <directory>./app/Modules/Payment/Database</directory>
+                <directory>./app/Modules/Invoicing/Routes</directory>
+                <directory>./app/Modules/Invoicing/Database</directory>
+                <directory>./app/Modules/Invoicing/Routes</directory>
+                <directory>./app/Modules/Invoicing/Database</directory>
+                <directory>./app/Modules/Reports/Routes</directory>
+                <directory>./app/Modules/Reports/Database</directory>
+                <directory>./app/Modules/Library/Routes</directory>
+                <directory>./app/Modules/Library/Database</directory>
+                <directory>./app/Modules/Library/Routes</directory>
+                <directory>./app/Modules/Library/Database</directory>
+                <directory>./app/Modules/Gyms/Routes</directory>
+                <directory>./app/Modules/Gyms/Database</directory>
+                <directory>./app/Modules/EmailCampaigns/Routes</directory>
+                <directory>./app/Modules/EmailCampaigns/Database</directory>
+                <directory>./app/Modules/Parameters/Routes</directory>
+                <directory>./app/Modules/Parameters/Database</directory>
+                <!-- generated modules exclude dirs here -->
+            </exclude>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="DB_CONNECTION" value="mysql"/>
+        <env name="DB_DRIVER" value="mysql"/>
+        <env name="DB_DATABASE" value="renova_testing"/>
+    </php>
+    <logging>
+        <log type="coverage-clover"
+             target="tests/_reports/logs/clover.xml"/>
+        <log type="coverage-html"
+             target="tests/_reports/coverage"
+             charset="UTF-8"
+             yui="true"
+             highlight="true"
+             lowUpperBound="35"
+             highLowerBound="70"/>
+        <log type="testdox-text"
+             target="tests/_reports/testdox/executed.txt"/>
+    </logging>
+</phpunit>

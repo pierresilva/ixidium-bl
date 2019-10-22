@@ -1,0 +1,147 @@
+<?php
+
+namespace DummyNamespace;
+
+use {{moduleNamespace}}Http\Requests\{{CrudName}}CreateRequest;
+use {{moduleNamespace}}Http\Requests\{{CrudName}}EditRequest;
+use DummyRootNamespaceHttp\Controllers\ApiController;
+
+use {{modelNamespace}}\{{modelName}};
+use Illuminate\Http\Request;
+
+class DummyClass extends ApiController
+{
+    /**
+     * Items per page.
+     *
+     * @var int
+     */
+    private $perPage = {{pagination}};
+
+    /**
+     * Create new instance of this controller.
+     *
+     * DummyClass constructor.
+     */
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $keyword = $request->get('search');
+
+        if (!empty($keyword)) {
+            ${{crudName}} = {{modelName}}::{{whereSnippet}}paginate($this->perPage);
+        } else {
+            ${{crudName}} = {{modelName}}::paginate($this->perPage);
+        }
+        ${{crudName}} = {{modelName}}::paginate($this->perPage);
+
+        $data = ${{crudName}}->toArray();
+
+        return response()->json([
+            'message' => 'Se obtuvo la colección con éxito!',
+            'data' => $data['data'],
+            'meta' => $this->getMeta($data),
+        ], 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param {{CrudName}}CreateRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{CrudName}}CreateRequest $request)
+    {
+        /* {{validationRules}} */
+        $requestData = $request->all();
+        {{fileSnippet}}
+        ${{crudNameSingular}} = {{modelName}}::create($requestData);
+
+        return response()->json([
+            'message' => 'Se creó el ítem con éxito!',
+            'data' => ${{crudNameSingular}},
+        ], 201);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+
+        return response()->json([
+            'message' => 'Se obtuvo el ítem con éxito!',
+            'data' => ${{crudNameSingular}},
+        ], 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param {{CrudName}}EditRequest $request
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{CrudName}}EditRequest $request, $id)
+    {
+        /* {{validationRules}} */
+
+        $requestData = $request->all();
+        {{fileSnippet}}
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        ${{crudNameSingular}}->update($requestData);
+
+        return response()->json([
+            'message' => 'Se actualizó el ítem con éxito!',
+            'data' => ${{crudNameSingular}},
+        ], 202);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        ${{crudNameSingular}}->delete($id);
+
+        return response()->json([
+            'message' => 'Se eliminó el ítem con éxito!',
+            'data' => ${{crudNameSingular}},
+        ], 202);
+    }
+
+    /**
+     * Remove data or other key from array
+     *
+     * @param $data
+     * @param string $key
+     *
+     * @return mixed
+     */
+    protected function getMeta($data, $key = 'data')
+    {
+        unset($data[$key]);
+        return $data;
+    }
+}

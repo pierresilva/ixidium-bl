@@ -1,0 +1,29 @@
+div.image-upload.is-dragover {
+  background-color: greenyellow;
+  border-color: green;
+}
+
+div.image-upload {
+  background-color: #cccccc;
+  border: 1px dashed #b1b2b7;
+  /* white-space: pre; Important for breakLine */
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  clear: both;
+}
+
+/*div.image-upload:before {
+  padding: 0;
+  margin: 0;
+  content: "";
+  color: #8c8c8c;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  top: calc(50% - 10px);
+  left: calc(50% - 10px);
+  color: #8c8c8c;
+  font-size: 20px;
+  font-weight: 600;
+}*/

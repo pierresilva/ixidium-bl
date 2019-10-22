@@ -1,0 +1,123 @@
+{
+  "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "label": "Código"
+    },
+    {
+      "name": "warehouse",
+      "type": "string",
+      "label": "Nombre"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "label": "Descripción"
+    },
+    {
+      "name": "location_id",
+      "type": "select",
+      "label": "Locación",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "Activo",
+          "value": "active"
+        }
+      ]
+    },
+    {
+      "name": "type_warehouse_id",
+      "type": "select",
+      "label": "Tipo",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "Activo",
+          "value": "active"
+        }
+      ]
+    },
+    {
+      "name": "allows_price_change",
+      "type": "boolean",
+      "label": "Cambiar precios"
+    },
+    {
+      "name": "close_next_day",
+      "type": "boolean",
+      "label": "Cierra el siguiente día"
+    },
+    {
+      "name": "closing_time",
+      "type": "time",
+      "label": "Hora de cierre"
+    },
+    {
+      "name": "status",
+      "type": "select",
+      "label": "Estado",
+      "options": [
+        {
+          "label": "Seleccione...",
+          "value": ""
+        },
+        {
+          "label": "Activo",
+          "value": "active"
+        },
+        {
+          "label": "Inactivo",
+          "value": "inactive"
+        }
+      ]
+    }
+  ],
+  "foreign_keys": [],
+  "relationships": [],
+  "validations": [
+    {
+      "field": "warehouse",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "code",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "description",
+      "rules": "nulable|max:255"
+    },
+    {
+      "field": "location_id",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "type_warehouse_id",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "allows_price_change",
+      "rules": "nullable|max:128"
+    },
+    {
+      "field": "close_next_day",
+      "rules": "nullable|max:128"
+    },
+    {
+      "field": "closing_time",
+      "rules": "nullable|max:128"
+    },
+    {
+      "field": "status",
+      "rules": "required"
+    }
+  ]
+}

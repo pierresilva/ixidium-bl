@@ -1,0 +1,41 @@
+#!/usr/bin/env php
+<?php
+$composerPaths = [
+    __DIR__ . '/../../../autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+];
+$installed = false;
+
+foreach ($composerPaths as $composerAutoloadFile) {
+    if (file_exists($composerAutoloadFile)) {
+        require_once $composerAutoloadFile;
+        $installed = true;
+        break;
+    }
+}
+
+if (!$installed) {
+    fwrite(
+        STDERR,
+        'You need to set up the project dependencies using Composer:' . PHP_EOL . PHP_EOL .
+        '    composer install' . PHP_EOL . PHP_EOL
+    );
+
+    die(1);
+}
+
+use Humbug\SelfUpdate\Updater;
+use PhUml\Console\Commands\SelfUpdateCommand;
+use PhUml\Console\PhUmlApplication;
+use PhUml\Console\ProgressDisplay;
+use PhUml\Console\UpdaterDisplay;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+$output = new ConsoleOutput();
+$application = new PhUmlApplication(new ProgressDisplay($output));
+if (0 === strpos(__FILE__, 'phar:')) {
+    $application->add(new SelfUpdateCommand(new Updater(), new UpdaterDisplay($output)));
+}
+
+$application->run(new ArgvInput(), $output);

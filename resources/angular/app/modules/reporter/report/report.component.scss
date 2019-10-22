@@ -1,0 +1,130 @@
+/*
+   server-side-angular-way.component.css
+*/
+.no-data-available {
+  text-align: center;
+}
+
+/*
+   src/styles.css (i.e. your global style)
+*/
+.dataTables_empty {
+  display: none;
+}
+
+.dataTable th {
+  // width: 100% !important;
+  min-width: 120px !important;
+  padding: 0px !important;
+}
+
+.dataTables_filter {
+  display: none;
+  visibility: hidden;
+}
+
+table.dataTable th {
+  // border-bottom: 1px solid #333;
+  // border-right: 1px solid #333;
+}
+
+table.dataTable td {
+
+  // border-bottom: 1px solid #333;
+  // border-right: 1px solid #333;
+}
+.dt-header {
+  // width: 100% !important;
+  // max-width: 500px !important;
+  // min-width: 400px !important;
+}
+
+.filterIcon {
+  height: 16px;
+  width: 16px;
+}
+
+.modalFilter {
+  display: none;
+  height: auto;
+  background: #FFF;
+  border: solid 1px #ccc;
+  padding: 8px;
+  position: absolute;
+  z-index: 1001;
+}
+
+.modalFilter .modal-content {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.modalFilter .modal-footer {
+  background: #FFF;
+  height: 35px;
+  padding-top: 6px;
+}
+
+.modalFilter .btn {
+  padding: 0 1em;
+  height: 28px;
+  line-height: 28px;
+  text-transform: none;
+}
+
+#mask {
+  display: none;
+  background: transparent;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 1000;
+}
+
+.dataTable tfoot {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.dataTables_info {
+  position: absolute;
+  left: 0px;
+  min-width: 50% !important;
+  margin-top: -50px;
+}
+
+.dataTables_paginate {
+  position: absolute;
+  right: 0px;
+  margin-top: -50px;
+}
+
+.dataTables_length {
+  position: absolute;
+  left: 0px;
+  min-width: 150px;
+}
+
+.dataTables_filter {
+  position: absolute;
+  right: 0px;
+}
+
+.dataTable div.dt-buttons {
+  position: relative;
+  float: left;
+  padding-top: 20px;
+}
+
+.dataTable select.browser-default {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #8c8c8c;
+  border-radius: 0px;
+  height: 2rem;
+}

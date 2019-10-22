@@ -1,0 +1,12 @@
+<mz-checkbox-container>
+    <input mz-checkbox %%required%%
+           mz-validation
+           name="%%itemName%%"
+           [label]="'%%itemName%%'"
+           id="%%itemName%%"
+           [checked]="%%crud_name_camel_singular%%.%%itemName%%"
+           [errorMessageResource]="errorMessageResources.%%itemName%%"
+           formControlName="%%itemName%%"
+           [(ngModel)]="%%crud_name_camel_singular%%.%%itemName%%"
+           type="checkbox">
+</mz-checkbox-container>

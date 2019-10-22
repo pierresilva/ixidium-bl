@@ -1,0 +1,100 @@
+<div class="container valing-wrapper" style="vertical-align: middle;">
+
+  <!--  Tables Section-->
+  <div id="auth-login" class="row">
+    <!-- <h1 class="thin">Login</h1> -->
+    <div class="col s12 m8 l6 offset-m2 offset-l3 card-panel">
+      <form class="auth-form" [formGroup]="registerForm" novalidate>
+        <div class="row auth-form-header">
+          <div class="col s4">
+            <a [routerLink]="['/home']">
+              <img src="assets/images/logos/logo-comfamiliar-c-blanco.svg" alt="logo" class="logo responsive-img-height">
+            </a>
+          </div>
+          <div class="col s8 right-align">
+            <h4 class="light white-text">Registrarse</h4>
+          </div>
+        </div>
+        <div class="auth-form-body">
+          <div class="row">
+            <mz-input-container>
+              <input mz-input
+                     mz-validation
+                     [label]="'Nombre'"
+                     formControlName="name"
+                     [errorMessageResource]="errorMessageResources.name"
+                     placeholder="Ingrese su nombre completo"
+                     id="name"
+                     name="name"
+                     type="text"
+                     minlength="4"
+                     maxlength="32"
+                     required>
+            </mz-input-container>
+          </div>
+          <div class="row">
+            <mz-input-container>
+              <input mz-input
+                     mz-validation
+                     [label]="'Email'"
+                     formControlName="email"
+                     [errorMessageResource]="errorMessageResources.email"
+                     placeholder="Ingrese su correo electrónico"
+                     id="email"
+                     name="email"
+                     type="email"
+                     required>
+            </mz-input-container>
+          </div>
+          <div class="row">
+            <mz-input-container>
+              <input mz-input
+                     mz-validation
+                     [label]="'Clave'"
+                     formControlName="password"
+                     [errorMessageResource]="errorMessageResources.password"
+                     placeholder="Ingrese su clave"
+                     id="password"
+                     name="password"
+                     type="password"
+                     minlength="5"
+                     maxlength="16"
+                     required>
+            </mz-input-container>
+          </div>
+          <div class="row">
+            <mz-input-container>
+              <input mz-input
+                     mz-validation
+                     [label]="'Confirmar Clave'"
+                     formControlName="password_confirmation"
+                     [errorMessageResource]="errorMessageResources.password_confirmation"
+                     placeholder="Confirme su clave"
+                     id="password_confirmation"
+                     name="password_confirmation"
+                     type="password"
+                     minlength="5"
+                     maxlength="16"
+                     required>
+            </mz-input-container>
+          </div>
+          <div class="row">
+            <div class="input-field center col s12">
+              <button mz-button
+                      [large]="true"
+                      (click)="register()"
+                      [disabled]="!registerForm.valid">
+                Registrarse
+              </button>
+            </div>
+            <div class="input-field col s12">
+              <p class="center medium-small sign-up">
+                Tiene una cuenta de usuario? <a [routerLink]="['/auth']">Ingrese</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<renova-loading-http></renova-loading-http>
+<renova-header id="top"></renova-header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<renova-footer></renova-footer>
+<renova-alert-service></renova-alert-service>
+<div *ngIf="backClickNon()" class="fixed-back-btn hide-on-small-only">
+  <a href="javascript:void(0)" (click)="backClick()" [flat]="false" [float]="true" mz-button>
+    <i mz-icon [size]="'36px'" [icon]="'undo'"></i>
+  </a>
+</div>

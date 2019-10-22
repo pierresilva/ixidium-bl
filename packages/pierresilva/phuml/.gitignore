@@ -1,0 +1,9 @@
+vendor
+composer.lock
+build
+coverage.clover
+.php_cs.cache
+.couscous
+phuml.phar
+phuml.phar.pubkey
+phuml.phar.version

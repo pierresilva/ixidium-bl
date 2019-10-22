@@ -1,0 +1,11 @@
+<p>
+    {{message}}
+</p>
+<p>
+    <renova-image-upload [widthIn]="100" [heightIn]="100" (onFileReaded)="setImage($event)"></renova-image-upload>
+
+    <input type="text" readonly name="image" id="image" [(ngModel)]="image">
+    <input type="hidden" name="base64Image" [(ngModel)]="base64" >
+
+    <button (click)="uploadImage()">Subir Imágen</button>
+</p>

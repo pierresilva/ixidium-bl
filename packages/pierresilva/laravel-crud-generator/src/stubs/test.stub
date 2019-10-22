@@ -1,0 +1,108 @@
+<?php
+
+namespace Tests\Unit;
+
+use Tests\TestCase;
+
+class DummyCrudNameTest extends TestCase
+{
+
+    /**
+     * DummyCrudName Store Test
+     */
+    public function testDummyCrudNameStore()
+    {
+        $response = $this->json('POST', 'api/crud_url', [
+            dummyItems
+        ]);
+
+        $response
+            ->assertStatus(201)
+            ->assertJson([
+                'message' => 'Se creó el ítem con éxito!',
+            ]);
+    }
+
+    /**
+     * DummyCrudName Index Test
+     */
+    public function testDummyCrudNameIndex()
+    {
+        $response = $this
+        ->json('GET', 'api/crud_url', []);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'message' => 'Se obtuvo la colección con éxito!',
+            ]);
+
+        $response = $this
+            ->json('GET', 'api/crud_url?search=hello', []);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'message' => 'Se obtuvo la colección con éxito!',
+            ]);
+
+    }
+
+    /**
+     * DummyCrudName Show Test
+     */
+    public function testDummyCrudNameShow()
+    {
+        $response = $this->json('GET', 'api/crud_url/1', []);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'message' => 'Se obtuvo el ítem con éxito!',
+            ]);
+    }
+
+    /**
+     * DummyCrudName Update Test
+     */
+    public function testDummyCrudNameUpdate()
+    {
+        $response = $this->json('PUT', 'api/crud_url/1', [
+            dummyItems
+        ]);
+
+        $response
+            ->assertStatus(202)
+            ->assertJson([
+                'message' => 'Se actualizó el ítem con éxito!',
+            ]);
+
+    }
+
+    /**
+     * DummyCrudName Edit Test
+     */
+    public function testDummyCrudNameEdit()
+    {
+        $response = $this->json('GET', 'api/crud_url/1/edit', []);
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'message' => 'Edit view or data for item 1',
+            ]);
+    }
+
+    /**
+     * DummyCrudName Destroy Test
+     */
+    public function testDummyCrudNameDestroy()
+    {
+        $response = $this->json('DELETE', 'api/crud_url/1', []);
+        $response
+            ->assertStatus(202)
+            ->assertJson([
+                'message' => 'Se eliminó el ítem con éxito!',
+            ]);
+    }
+
+}

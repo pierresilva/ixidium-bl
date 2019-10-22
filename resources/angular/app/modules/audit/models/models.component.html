@@ -1,0 +1,66 @@
+<nav class="top-nav">
+  <div class="container">
+    <div class="nav-wrapper" id="posts-title">
+      <a class="page-title">Auditoria: Modelos Auditados</a>
+    </div>
+  </div>
+</nav>
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="s12 m12 l12">
+        <form>
+          <h5>Adicione modelos para auditar:</h5>
+
+          <mz-select-container>
+            <select mz-select
+                    required
+                    name="model"
+                    [(ngModel)]="model"
+                    (change)="addModel()"
+                    id="model">
+              <option value="">Seleccione un modelo a auditar...</option>
+              <option *ngFor="let option of modelOptions" [value]="option">{{option}}</option>
+            </select>
+          </mz-select-container>
+        </form>
+      </div>
+    </div>
+    <div class="row" *ngIf="modelsList?.length < 1">
+      <div class="col s12">
+        <mz-collection>
+          <mz-collection-header><h5>No se esta auditando ningún modelo.</h5></mz-collection-header>
+        </mz-collection>
+      </div>
+    </div>
+    <div class="row" *ngIf="modelsList?.length > 0">
+      <div class="col s12">
+        <mz-collection>
+          <mz-collection-header><h5>Modelos Auditados</h5></mz-collection-header>
+          <mz-collection-item [avatar]="true" *ngFor="let model of modelsList">
+            <div class="title">{{model.fqn}}</div>
+            <div>Seguimiento desde {{model.created_at | amTimeAgo}}</div>
+            <div>Seguimiento por {{model.created_by.name}}</div>
+            <div mz-secondary-content>
+              <a (click)="removeModel(model.id)"
+                 href="javascript:void(0);">
+                <i mz-icon
+                   mz-tooltip
+                   [tooltip]="'Dejar de auditar'"
+                   [position]="'bottom'"
+                   [icon]="'visibility_off'"></i>
+              </a>
+              <a [routerLink]="['/audit/activities/list', model.fqn]">
+                <i mz-icon
+                   mz-tooltip
+                   [tooltip]="'Ver registros'"
+                   [position]="'bottom'"
+                   [icon]="'list'"></i>
+              </a>
+            </div>
+          </mz-collection-item>
+        </mz-collection>
+      </div>
+    </div>
+  </div>
+</div>

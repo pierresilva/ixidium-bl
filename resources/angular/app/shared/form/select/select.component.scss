@@ -1,0 +1,15 @@
+select {
+  // display: block;
+}
+div.invalid {
+  color: #e30613;
+  font-size: .8rem;
+  opacity: 1;
+  overflow-wrap: break-word;
+  margin-top: -20px;
+}
+
+.select-options-hidden {
+  display: none;
+  visibility: hidden;
+}

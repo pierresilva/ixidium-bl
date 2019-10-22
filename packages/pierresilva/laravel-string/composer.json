@@ -1,0 +1,40 @@
+{
+  "name": "pierresilva/laravel-string",
+  "description": "String handling evolved",
+  "keywords": [
+    "spatie",
+    "string",
+    "handling",
+    "handy"
+  ],
+  "homepage": "https://github.com/pierresilva/laravel-string",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pierre Silva",
+      "email": "pierremichelsilva@gmail.com"
+    }
+  ],
+  "require": {
+    "php" : ">=5.6.0",
+    "anahkiasen/underscore-php": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit" : "^5.7",
+    "scrutinizer/ocular": "~1.1"
+  },
+  "autoload": {
+    "files": ["src/string_functions.php"],
+    "psr-4": {
+      "pierresilva\\String\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "pierresilva\\String\\Test\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  }
+}

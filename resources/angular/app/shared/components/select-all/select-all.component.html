@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col s1">
+        <mz-checkbox-container>
+            <input mz-checkbox
+                   [id]="'select-all' + dataConfig.name "
+                   [name]="'select-all' + dataConfig.name "
+                   (click)="selectAll($event)"
+                   type="checkbox">
+        </mz-checkbox-container>
+    </div>
+    <div class="col s11">
+        <mz-select-container>
+            <select mz-select
+                    [id]="dataConfig.id"
+                    [name]="dataConfig.name"
+                    multiple
+                    [(ngModel)]="valueSelected"
+                    [label]="dataConfig.label"
+                    [placeholder]="dataConfig.placeholder">
+                <option *ngFor="let value of data" value="{{value.id}}">{{value.text}}</option>
+            </select>
+        </mz-select-container>
+    </div>
+</div>
+
+<pre>{{valueSelected | json}}</pre>
+

@@ -1,0 +1,99 @@
+{
+  "reservations":[
+    {
+      "affiliates":[
+        {
+          "affiliate":"SEBAXTIAN LARA",
+          "affiliate_names":"SEBAXTIAN",
+          "affiliate_surnames":"LARA",
+          "categoria":"B",
+          "document":"1075276762",
+          "edad":"25",
+          "fecha_nace":"1994-01-10",
+          "genero":"M",
+          "isTitular":true,
+          "tarifa":33400,
+          "type_doc":"CC"
+        },
+        {
+          "affiliate":"WENDY MEDINA",
+          "affiliate_names":"WENDY",
+          "affiliate_surnames":"MEDINA",
+          "categoria":"A",
+          "document":"1075269175",
+          "edad":"26",
+          "fecha_nace":"1993-01-07",
+          "genero":"F",
+          "isTitular":false,
+          "tarifa":28600,
+          "type_doc":"CC"
+        },
+        {
+          "affiliate":"ALEXANDER ROA",
+          "affiliate_names":"ALEXANDER",
+          "affiliate_surnames":"ROA",
+          "categoria":"C",
+          "document":"7732178",
+          "edad":"34",
+          "fecha_nace":"1985-06-22",
+          "genero":"M",
+          "isTitular":false,
+          "tarifa":41700,
+          "type_doc":"CC"
+        },
+        {
+          "affiliate":"Some One",
+          "affiliate_names":"Some",
+          "affiliate_surnames":"One",
+          "categoria":"P",
+          "document":"8999000",
+          "edad":"38",
+          "fecha_nace":"1980-08-09",
+          "genero":"M",
+          "isTitular":false,
+          "tarifa":47600,
+          "type_doc":"CC"
+        }
+      ],
+      "product":{
+        "id":354,
+        "name":"HOSPEDAJE PLENO",
+        "quantity":2
+      },
+      "reservation":{
+        "cell_phone":3212720906,
+        "date_end":"2019-09-02",
+        "date_start":"2019-08-31",
+        "email":"jairo_101@hotmail.com",
+        "location_id":2,
+        "number_people":4,
+        "reservable_id":21,
+        "time_end":"10:00:00",
+        "time_start":"10:00:00",
+        "web_origin":true
+      },
+      "thirdParty":{
+        "cell_phone":3212720906,
+        "company":"SEBAXTIAN LARA",
+        "contact_email":"jairo_101@hotmail.com",
+        "id":13,
+        "identification":"CC 1075276762"
+      }
+    }
+  ]
+}
+{
+  "date_end": "2019-07-31",
+  "date_start": "2019-07-31",
+  "description": "Some description bloqued...",
+  "location_id": "1",
+  "reservable_id": "3",
+  "reservation": "Some event description",
+  "responsible_cellphone": "3117254403",
+  "responsible_email": "pierremichelsilva@gmail.com",
+  "responsible_first_name": "PIERRE MICHEL",
+  "responsible_last_name": "SILVA PÉREZ",
+  "responsible_phone": "3117254403",
+  "time_end": "23:59",
+  "time_start": "20:00"
+}

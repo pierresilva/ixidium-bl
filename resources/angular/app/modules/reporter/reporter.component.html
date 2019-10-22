@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <mz-input-container>
+                <i mz-icon
+                   mz-input-prefix
+                   [icon]="'search'">
+                </i>
+                <input mz-input
+                       [label]="'Buscar'"
+                       id="search-reports"
+                       length="150"
+                       (keyup.enter)="getReports()"
+                       type="text">
+            </mz-input-container>
+            <table class="responsive-table">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Conexión</th>
+                    <th>Módulo</th>
+                    <th>Descripción</th>
+                    <th>Desde</th>
+                    <th>Hasta</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody *ngIf="reports.length < 1">
+                <tr>
+                    <td colspan="6">
+                        No hay resultados
+                    </td>
+                </tr>
+                </tbody>
+                <tbody *ngIf="reports.length > 0">
+                <tr *ngFor="let report of reports">
+                    <td>{{report.name}}</td>
+                    <td>{{report.connection}}</td>
+                    <td>{{report.module}}</td>
+                    <td>{{report.description}}</td>
+                    <td>{{getTime(report.start_at)}}</td>
+                    <td>{{getTime(report.end_at)}}</td>
+                    <td>
+                        <a (click)="editReport(report)"
+                           style="cursor: pointer;"
+                           [id]="'report-edit-' + report.id">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        &nbsp;&nbsp;
+                        <a (click)="deleteReport(report)"
+                           style="cursor: pointer;"
+                           [id]="'report-delete-' + report.id">
+                            <i class="material-icons">delete</i>
+                        </a>
+                        <a *ngIf="canViewReport(report.start_at, report.end_at)"
+                                [routerLink]="['/reporter/report/view/', report.id, report.connection, report.name, report.fields]">
+                            <i class="material-icons">visibility</i>
+                        </a>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <renova-pagination
+                    (goPage)="getReports($event)"
+                    (goNext)="getReports(meta.current_page + 1)"
+                    (goPrev)="getReports(meta.current_page - 1)"
+                    [pagesToShow]="10"
+                    [page]="meta.current_page"
+                    [perPage]="meta.per_page"
+                    [count]="meta.total"></renova-pagination>
+
+            <a mz-button
+               mz-tooltip
+               [tooltip]="'Nuevo Reporte'"
+               [position]="'left'"
+
+               [delay]="0"
+               [float]="true"
+               [large]="true"
+               (click)="newReport()"
+               class="list-add-button red">
+                <i class="material-icons i-large">add</i>
+            </a>
+        </div>
+    </div>
+</div>

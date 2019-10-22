@@ -1,0 +1,63 @@
+{
+  "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "label": "Código"
+    },
+    {
+      "name": "origin",
+      "type": "string",
+      "label": "Origen"
+    },
+    {
+      "name": "prefix",
+      "type": "string",
+      "label": "Descripción"
+    },
+    {
+      "name": "consecutive",
+      "type": "string",
+      "label": "Consecutivo"
+    },
+    {
+      "name": "status",
+      "type": "select",
+      "label": "Estado",
+      "options": [
+        {
+          "label": "Activo",
+          "value": "active"
+        },
+        {
+          "label": "Inactivo",
+          "value": "inactive"
+        }
+      ]
+    }
+  ],
+  "foreign_keys": [],
+  "relationships": [],
+  "validations": [
+    {
+      "field": "origin",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "code",
+      "rules": "required|max:128"
+    },
+    {
+      "field": "consecutive",
+      "rules": "nullable|max:128"
+    },
+    {
+      "field": "prefix",
+      "rules": "nullable|max:128"
+    },
+    {
+      "field": "status",
+      "rules": "required"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+<label *ngIf="_label">{{_label}} <span *ngIf="_required">*</span></label>
+<select2 [disabled]="_disabledFrom"
+         [data]="_selectData | async"
+         [options]="_options"
+         [value]="_value | async"
+         (valueChanged)="_changed($event); eventChanged($event)"></select2>
+<ng-container *ngIf="!_group && !_field && _required && !_value">
+  <span style="color: red; font-size: 10px;" >Campo requerido.</span><br>
+</ng-container>
+<ng-container *ngIf="_group && _field">
+  <ng-container *ngIf="_group.get(_field).getError('required')">
+    <span style="color: red; font-size: 10px;" >Campo requerido.</span><br>
+  </ng-container>
+  <ng-container *ngIf="_group.get(_field).getError('minlength')">
+    <span style="color: red; font-size: 10px;">Seleccione al menos {{_minLength}} opciones..</span><br>
+  </ng-container>
+  <ng-container *ngIf="_group.get(_field).getError('maxlength')">
+    <span style="color: red; font-size: 10px;">Seleccione máximo {{_maxLength}} opciones..</span><br>
+  </ng-container>
+</ng-container>
