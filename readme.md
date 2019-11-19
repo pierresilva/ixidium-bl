@@ -1,8 +1,4 @@
-## ![alt text](https://bytebucket.org/comfamiliarhuila/recursos-comfamiliar/raw/89ac8735b4f1c33ef40d3688c8433fcf47125d3d/LogosComfamiliar/LogoComfamiliarReadme.png?token=7bbdc6f152edca624f681592b89e9fa808790ac6 "COMFAMILIAR HUILA")      
-
-##**Comfamiliar Huila**
-
-### Repositorio: Renova
+### Repositorio: BL
 
 ### Configuración:
 
