@@ -42,7 +42,7 @@ __Esta guia de instalación presupone que usted tiene instaladas y configuradas 
 * Clonar repositorio.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-git clone https://bitbucket.org/comfamiliarhuila/renova.git
+git clone https://github.com/pierresilva/ixidium-bl.git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Posicionarse en la carpeta
