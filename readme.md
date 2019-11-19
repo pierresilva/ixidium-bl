@@ -48,7 +48,7 @@ git clone https://github.com/pierresilva/ixidium-bl.git
 * Posicionarse en la carpeta
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-cd renova
+cd ixidium-bl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Posicionarse en la rama develop
@@ -105,7 +105,7 @@ php artisan db:seed --class=SqlSeederLast
 npm run start
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-__NOTA__: Si su virtual host no es `http://renova.test` debe reemplazar el valor
+__NOTA__: Si su virtual host no es `http://ixidium-bl.test` debe reemplazar el valor
 de `api_url` en: `resources/angular/environments/environment.ts` por la url de su virtual host.
 
 * Compilar a producción
