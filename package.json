@@ -84,7 +84,7 @@
     "summernote": "^0.8.12",
     "text-mask-addons": "^3.8.0",
     "tslib": "^1.10.0",
-    "yarn": "^1.17.0",
+    "yarn": "^1.22.0",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
