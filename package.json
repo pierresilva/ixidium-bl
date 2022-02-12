@@ -36,7 +36,7 @@
     "@ng-idle/keepalive": "^2.0.0-beta.15",
     "@ngui/auto-complete": "^1.0.2",
     "@tinymce/tinymce-angular": "^2.5.0",
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.3",
     "angular-datatables": "^5.1.0",
     "angular2-fontawesome": "^5.2.1",
     "angular2-moment": "^1.9.0",
