@@ -61,7 +61,7 @@
     "jquery-ui-dist": "^1.12.1",
     "jshint": "^2.10.2",
     "materialize-css": "^1.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ng-fullcalendar": "^1.7.5",
     "ng-recaptcha": "^4.3.0",
     "ng2-charts": "^1.6.0",
